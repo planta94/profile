@@ -1,0 +1,139 @@
+{
+  "header": {
+    "about": "Profil",
+    "experience": "Pengalaman",
+    "expertise": "Kepakaran",
+    "publications": "Penerbitan",
+    "skills": "Kemahiran",
+    "contact": "Hubungi",
+    "downloadCv": "Muat Turun CV"
+  },
+  "hero": {
+    "title": "Menghubungkan Kejuruteraan, Sains Data, dan AI Agen",
+    "subtitle": "Dr. Chia Min Yan ialah seorang Jurutera PhD dan Saintis Data yang pakar dalam pembelajaran mesin, penyelesaian LLM agen, mikroperkhidmatan tindanan penuh, dan pemodelan proses alam sekitar.",
+    "ctaContact": "Hubungi Saya",
+    "ctaResearch": "Penyelidikan Terpilih"
+  },
+  "experience": {
+    "tag": "Sejarah Kerjaya",
+    "title": "Pengalaman Profesional",
+    "desc": "Merapatkan jurang antara penyelidikan saintifik dan aplikasi komersial.",
+    "list": [
+      {
+        "role": "Data Scientist",
+        "company": "PAIDChain Sdn. Bhd. & JuiceUp EV Grid Sdn. Bhd.",
+        "period": "Julai 2022 – Kini",
+        "bullets": [
+          "Mengetuai penyelidikan end-to-end, seni bina, dan penggunaan model pembelajaran mesin dan statistik gred pengeluaran (pengesanan penipuan, anomali peniaga, pemantau tapak web, skor kredit) untuk memacu operasi fintech dan pengecasan EV.",
+          "Menerajui reka bentuk teknikal mikroperkhidmatan backend berskala, struktur pangkalan data, dan API RESTful, sambil mengarahkan pembangunan portal web responsif dan papan pemuka interaktif di frontend.",
+          "Memulakan dan memperjuangkan strategi AI generatif syarikat, menyusun penyepaduan LLM dan rangka kerja agen termaju untuk mengautomasikan penaakulan kompleks dan aliran kerja perniagaan."
+        ],
+        "tech": ["Node.js", "TypeScript", "PostgreSQL", "Angular", "Python", "Docker", "Git"]
+      },
+      {
+        "role": "Production Engineer",
+        "company": "Maxter Glove Manufacturing Sdn. Bhd.",
+        "period": "Jan 2019 – Apr 2019",
+        "bullets": [
+          "Menyelia talian jaminan kualiti pembuatan sarung tangan, memastikan pematuhan ketat terhadap spesifikasi pelanggan antarabangsa dan keperluan kawal selia.",
+          "Menyeragamkan dokumentasi penyelenggaraan dan menyusun metrik penjejakan prestasi untuk memaksimumkan kecekapan talian dan masa operasi."
+        ]
+      },
+      {
+        "role": "Production Engineer (Intern)",
+        "company": "Maxter Glove Manufacturing Sdn. Bhd.",
+        "period": "Okt 2015 – Dis 2015",
+        "bullets": [
+          "Memantau dan mengekalkan parameter rawatan di kemudahan air sisa, memastikan pematuhan 100% dengan piawaian keselamatan alam sekitar kebangsaan.",
+          "Menganalisis pembolehubah proses dos kimia untuk mengoptimumkan operasi rawatan, berjaya mencapai penjimatan kos operasi."
+        ]
+      }
+    ]
+  },
+  "expertise": {
+    "tag": "Kepakaran",
+    "title": "Bidang Fokus Utama",
+    "desc": "Papan pemuka interaktif yang memamerkan hasil kerja industri secara langsung dan pencapaian penyelidikan.",
+    "tabs": [
+      {
+        "title": "AI Agen & LLM",
+        "subtitle": "Aliran Kerja Pintar",
+        "icon": "smart_toy",
+        "badge": "Inovasi",
+        "description": "Memulakan dan menyediakan seni bina AI termaju untuk mengautomasikan proses dan saluran pembuatan keputusan yang kompleks.",
+        "bullets": [
+          "Penyediaan dan pelaksanaan kecerdasan buatan untuk kes penggunaan perniagaan fintech.",
+          "Penyepaduan Model Bahasa Besar (LLM) dan rangka kerja agen termaju.",
+          "Membangunkan saluran paip khusus untuk perancangan tugas autonomi dan pelaksanaan kod.",
+          "Penyelidikan gunaan dalam kecerdasan proses dan pembuatan keputusan berasaskan agen."
+        ],
+        "tech": ["LLMs", "Agentic Frameworks", "LangChain", "Python", "TypeScript", "Node.js"]
+      },
+      {
+        "title": "Sains Data & Fintech",
+        "subtitle": "Pemodelan Ramalan",
+        "icon": "query_stats",
+        "badge": "Pengeluaran",
+        "description": "Menyelidik, mereka bentuk, dan menyelenggara sistem backend untuk model statistik dan pembelajaran mesin dalam persekitaran fintech.",
+        "bullets": [
+          "Merangka model statistik dan pembelajaran mesin untuk pengesanan penipuan dan pemantauan peniaga.",
+          "Membangunkan model pemantauan laman web dan skor kredit.",
+          "Membina dan mengurus mikroperkhidmatan, pangkalan data, dan API RESTful.",
+          "Mengetuai pembangunan frontend responsif untuk portal dan papan pemuka interaktif."
+        ],
+        "tech": ["Python", "TypeScript", "PostgreSQL", "Node.js", "Angular", "Docker", "Git"]
+      },
+      {
+        "title": "Penyelidikan Akademik",
+        "subtitle": "Sumbangan Saintifik",
+        "icon": "science",
+        "badge": "Sains",
+        "description": "Sumbangan saintifik yang luas kepada aplikasi pembelajaran mesin dalam hidrologi dan kejuruteraan alam sekitar.",
+        "bullets": [
+          "Doktor Falsafah (Kejuruteraan) dengan fokus pada teknik gabungan data yang teguh.",
+          "Menerbitkan 5+ artikel dalam jurnal Web of Science Q1.",
+          "Menerajui aplikasi pembelajaran mendalam untuk anggaran rujukan evapotranspirasi.",
+          "Menyepadukan algoritma pengoptimuman lanjutan dengan mesin vektor sokongan untuk ramalan."
+        ],
+        "tech": ["Machine Learning", "Deep Learning", "Data Fusion", "Hydrology", "Statistics"]
+      },
+      {
+        "title": "Kejuruteraan & Pengoptimuman",
+        "subtitle": "Sistem Kimia & Proses",
+        "icon": "engineering",
+        "badge": "Kejuruteraan",
+        "description": "Memanfaatkan prinsip kejuruteraan kimia untuk mengoptimumkan proses dan membangunkan membran komposit termaju.",
+        "bullets": [
+          "Sarjana Sains Kejuruteraan yang memfokuskan pada membran pertukaran proton.",
+          "Mengoptimumkan parameter proses loji rawatan air sisa untuk penjimatan kos.",
+          "Memantau pematuhan kualiti produk untuk memenuhi piawaian pelanggan yang dikawal selia.",
+          "Kepakaran dalam membran sel bahan api, pemodelan alam sekitar, dan simulasi proses."
+        ],
+        "tech": ["MATLAB", "Aspen HYSYS", "SEM", "Gas Chromatography", "Wastewater Treatment"]
+      }
+    ]
+  },
+  "publications": {
+    "tag": "Penyelidikan Akademik",
+    "title": "Penerbitan Terpilih",
+    "desc": "Artikel penyelidikan berimpak tinggi yang diterbitkan dalam jurnal Web of Science Q1."
+  },
+  "skills": {
+    "tag": "Set Kemahiran",
+    "title": "Kepakaran Teknikal",
+    "desc": "Kecekapan teras, alat, dan bahasa.",
+    "devToolsTitle": "Alat Pembangunan & Teras",
+    "langInterestsTitle": "Bahasa & Minat",
+    "researchInterestsTitle": "Minat Penyelidikan"
+  },
+  "contact": {
+    "tag": "Hubungi Saya",
+    "title": "Mari membina bersama",
+    "desc": "Saya sentiasa terbuka untuk membincangkan peluang baharu, integrasi pembelajaran mesin, atau kolaborasi akademik.",
+    "emailLabel": "E-mel",
+    "phoneLabel": "Telefon",
+    "locationLabel": "Lokasi",
+    "locationValue": "Selangor, Malaysia",
+    "referencesTitle": "Rujukan Profesional"
+  }
+}

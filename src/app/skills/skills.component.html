@@ -1,0 +1,75 @@
+<div class="section-header">
+  <span class="section-tag">{{ ts.t().skills.tag }}</span>
+  <h2 class="section-title">{{ ts.t().skills.title }}</h2>
+  <p class="section-desc">{{ ts.t().skills.desc }}</p>
+</div>
+
+<div class="skills-grid">
+  <!-- Programming Skills -->
+  <div class="skills-card">
+    <h3>{{ ts.t().skills.devToolsTitle }}</h3>
+    <div class="skill-bar-list">
+      @for (skill of devSkills; track skill.name) {
+        <div class="skill-bar-item">
+          <div class="skill-label-row">
+            <span class="skill-name">{{ skill.name }}</span>
+            <span class="skill-percentage">{{ skill.level }}%</span>
+          </div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill" [style.width.%]="skill.level"></div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Languages / Soft Skills -->
+  <div class="skills-card">
+    <h3>{{ ts.t().skills.langInterestsTitle }}</h3>
+    <div class="skill-bar-list">
+      @for (lang of languages; track lang.name) {
+        <div class="skill-bar-item">
+          <div class="skill-label-row">
+            <span class="skill-name">
+              {{
+                ts.currentLang() === 'en'
+                  ? lang.name
+                  : ts.currentLang() === 'zh'
+                    ? lang.zhName
+                    : lang.msName
+              }}
+              ({{
+                ts.currentLang() === 'en'
+                  ? lang.enLabel
+                  : ts.currentLang() === 'zh'
+                    ? lang.zhLabel
+                    : lang.msLabel
+              }})
+            </span>
+            <span class="skill-percentage">{{ lang.level }}%</span>
+          </div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill accent-green" [style.width.%]="lang.level"></div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="interests-container">
+      <h4>{{ ts.t().skills.researchInterestsTitle }}</h4>
+      <div class="interests-tags">
+        @for (interest of researchInterests; track interest.en) {
+          <span class="interest-tag">
+            {{
+              ts.currentLang() === 'en'
+                ? interest.en
+                : ts.currentLang() === 'zh'
+                  ? interest.zh
+                  : interest.ms
+            }}
+          </span>
+        }
+      </div>
+    </div>
+  </div>
+</div>

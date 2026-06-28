@@ -1,0 +1,95 @@
+<div class="section-header">
+  <span class="section-tag">{{ ts.t().expertise.tag }}</span>
+  <h2 class="section-title">{{ ts.t().expertise.title }}</h2>
+  <p class="section-desc">{{ ts.t().expertise.desc }}</p>
+</div>
+
+<div class="dashboard-container">
+  <!-- Desktop Left Sidebar Tabs -->
+  <div class="dashboard-tabs desktop-only">
+    @for (tab of ts.t().expertise.tabs; track tab.title; let i = $index) {
+      <button class="tab-btn" [class.active]="activeTab() === i" (click)="activeTab.set(i)">
+        <span class="material-symbols-outlined tab-icon">{{ tab.icon }}</span>
+        <div class="tab-btn-text">
+          <span class="tab-title">{{ tab.title }}</span>
+          <span class="tab-subtitle">{{ tab.subtitle }}</span>
+        </div>
+        <span class="material-symbols-outlined tab-arrow">chevron_right</span>
+      </button>
+    }
+  </div>
+
+  <!-- Mobile Carousel Controller (Replaces Tab Bar on Mobile) -->
+  <div class="carousel-control-bar mobile-only">
+    <button
+      class="carousel-nav-btn"
+      (click)="prevTab()"
+      [disabled]="activeTab() === 0"
+      aria-label="Previous Domain"
+    >
+      <span class="material-symbols-outlined">chevron_left</span>
+    </button>
+
+    <div class="carousel-center">
+      <span class="carousel-label">{{ ts.t().expertise.tabs[activeTab()].title }}</span>
+      <div class="carousel-indicators">
+        @for (tab of ts.t().expertise.tabs; track tab.title; let i = $index) {
+          <span
+            class="indicator-dot"
+            [class.active]="activeTab() === i"
+            (click)="activeTab.set(i)"
+          ></span>
+        }
+      </div>
+    </div>
+
+    <button
+      class="carousel-nav-btn"
+      (click)="nextTab()"
+      [disabled]="activeTab() === ts.t().expertise.tabs.length - 1"
+      aria-label="Next Domain"
+    >
+      <span class="material-symbols-outlined">chevron_right</span>
+    </button>
+  </div>
+
+  <!-- Content Details Pane -->
+  <div class="dashboard-content">
+    @for (tab of ts.t().expertise.tabs; track tab.title; let i = $index) {
+      <div class="content-pane" [class.active]="activeTab() === i">
+        <div class="pane-header">
+          <div class="pane-title-group">
+            <span class="material-symbols-outlined pane-icon">{{ tab.icon }}</span>
+            <h3>{{ tab.title }}</h3>
+          </div>
+          <span class="pane-badge">{{ tab.badge }}</span>
+        </div>
+
+        <p class="pane-description">{{ tab.description }}</p>
+
+        <div class="pane-body">
+          <h4 class="pane-section-title">
+            {{ ts.currentLang() === 'en' ? 'Key Accomplishments' : '主要工作成果' }}
+          </h4>
+          <ul class="accomplishments-list">
+            @for (item of tab.bullets; track $index) {
+              <li>
+                <span class="bullet-dot"></span>
+                <span>{{ item }}</span>
+              </li>
+            }
+          </ul>
+
+          <h4 class="pane-section-title">
+            {{ ts.currentLang() === 'en' ? 'Technology Stack' : '技术栈' }}
+          </h4>
+          <div class="tech-tag-container">
+            @for (tech of tab.tech; track tech) {
+              <span class="tech-tag">{{ tech }}</span>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

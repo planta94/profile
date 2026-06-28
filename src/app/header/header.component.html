@@ -1,0 +1,97 @@
+<header class="floating-header">
+  <div class="nav-container">
+    <a href="#" class="logo">
+      <img
+        src="profile.jpg"
+        alt="Chia Min Yan"
+        class="logo-avatar"
+        onerror="this.src = 'favicon.png'"
+      />
+      <span class="logo-text">CHIA MIN YAN</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#about" class="nav-link" [class.active]="activeSection() === 'about'">{{
+        ts.t().header.about
+      }}</a>
+      <a href="#expertise" class="nav-link" [class.active]="activeSection() === 'expertise'">{{
+        ts.t().header.expertise
+      }}</a>
+      <a href="#experience" class="nav-link" [class.active]="activeSection() === 'experience'">{{
+        ts.t().header.experience
+      }}</a>
+      <a
+        href="#publications"
+        class="nav-link"
+        [class.active]="activeSection() === 'publications'"
+        >{{ ts.t().header.publications }}</a
+      >
+      <a href="#skills" class="nav-link" [class.active]="activeSection() === 'skills'">{{
+        ts.t().header.skills
+      }}</a>
+      <a href="#contact" class="nav-link" [class.active]="activeSection() === 'contact'">{{
+        ts.t().header.contact
+      }}</a>
+    </nav>
+
+    <div class="header-actions">
+      <!-- Custom Language Dropdown -->
+      <div class="lang-dropdown">
+        <button
+          class="lang-dropdown-trigger"
+          (click)="toggleDropdown()"
+          [class.active]="isDropdownOpen()"
+          aria-label="Select Language"
+        >
+          <span class="material-symbols-outlined lang-icon">translate</span>
+          <span class="active-lang-text desktop-only">{{ getLangLabel(ts.currentLang()) }}</span>
+          <span class="active-lang-text mobile-only">{{
+            ts.currentLang() === 'zh' ? '中' : ts.currentLang() === 'ms' ? 'BM' : 'EN'
+          }}</span>
+          <span class="material-symbols-outlined arrow-icon" [class.rotated]="isDropdownOpen()"
+            >expand_more</span
+          >
+        </button>
+
+        @if (isDropdownOpen()) {
+          <div class="lang-dropdown-menu">
+            <button
+              class="menu-item"
+              [class.selected]="ts.currentLang() === 'en'"
+              (click)="selectLanguage('en')"
+            >
+              <span class="item-text">English (EN)</span>
+              @if (ts.currentLang() === 'en') {
+                <span class="material-symbols-outlined check-icon">check</span>
+              }
+            </button>
+            <button
+              class="menu-item"
+              [class.selected]="ts.currentLang() === 'zh'"
+              (click)="selectLanguage('zh')"
+            >
+              <span class="item-text">中文 (ZH)</span>
+              @if (ts.currentLang() === 'zh') {
+                <span class="material-symbols-outlined check-icon">check</span>
+              }
+            </button>
+            <button
+              class="menu-item"
+              [class.selected]="ts.currentLang() === 'ms'"
+              (click)="selectLanguage('ms')"
+            >
+              <span class="item-text">Melayu (BM)</span>
+              @if (ts.currentLang() === 'ms') {
+                <span class="material-symbols-outlined check-icon">check</span>
+              }
+            </button>
+          </div>
+        }
+      </div>
+
+      <a href="CV.pdf" download="Chia_Min_Yan_CV.pdf" class="btn-cv">
+        <span class="material-symbols-outlined">download</span>
+        <span class="btn-cv-text">{{ ts.t().header.downloadCv }}</span>
+      </a>
+    </div>
+  </div>
+</header>

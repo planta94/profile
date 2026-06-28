@@ -1,0 +1,33 @@
+<div class="section-header">
+  <span class="section-tag">{{ ts.t().publications.tag }}</span>
+  <h2 class="section-title">{{ ts.t().publications.title }}</h2>
+  <p class="section-desc">{{ ts.t().publications.desc }}</p>
+</div>
+
+<div class="publications-grid">
+  @for (pub of publications; track pub.title) {
+    <div class="pub-card">
+      <div class="pub-badge-row">
+        <span class="pub-tier" [class.q1]="pub.tier === 'Q1'">{{ pub.tier }} Journal</span>
+        <span class="pub-year">{{ pub.year }}</span>
+      </div>
+      <h3 class="pub-title">{{ pub.title }}</h3>
+      <p class="pub-authors">
+        @for (author of pub.authors; track author; let last = $last) {
+          @if (author === 'Chia, M.Y.') {
+            <strong>{{ author }}</strong>
+          } @else {
+            <span>{{ author }}</span>
+          }
+          @if (!last) {
+            <span>, </span>
+          }
+        }
+      </p>
+      <p class="pub-journal">
+        <span class="material-symbols-outlined">menu_book</span>
+        <span>{{ pub.journal }}</span>
+      </p>
+    </div>
+  }
+</div>

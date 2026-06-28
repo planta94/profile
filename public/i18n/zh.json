@@ -1,0 +1,139 @@
+{
+  "header": {
+    "about": "个人简介",
+    "experience": "工作经历",
+    "expertise": "专业领域",
+    "publications": "学术成果",
+    "skills": "技能专长",
+    "contact": "联系方式",
+    "downloadCv": "下载简历"
+  },
+  "hero": {
+    "title": "融合工程、数据科学与代理AI",
+    "subtitle": "谢旻言博士是一位工程学博士及数据科学专家，专注于机器学习、大语言模型（LLM）代理方案、全栈微服务以及环境过程建模。",
+    "ctaContact": "取得联系",
+    "ctaResearch": "精选研究"
+  },
+  "experience": {
+    "tag": "职业生涯",
+    "title": "工作经历",
+    "desc": "搭建科学研究与商业应用之间的桥梁。",
+    "list": [
+      {
+        "role": "数据科学家",
+        "company": "PAIDChain 有限公司 & JuiceUp 电动汽车充电网有限公司",
+        "period": "2022年7月 – 至今",
+        "bullets": [
+          "领导用于金融科技和电动汽车充电网的生产级统计与机器学习模型（欺诈检测、商户监控、网站监察、信用评分）的端到端研究、架构和部署。",
+          "主导可扩展后端微服务、数据库结构及 RESTful API 的技术设计，并指导响应式网页门户和交互式仪表盘的前端开发。",
+          "发起并主导公司的生成式人工智能（Generative AI）战略，组织大语言模型（LLM）集成与先进代理框架以自动化复杂推理和业务工作流。"
+        ],
+        "tech": ["Node.js", "TypeScript", "PostgreSQL", "Angular", "Python", "Docker", "Git"]
+      },
+      {
+        "role": "生产工程师",
+        "company": "Maxter 手套制造有限公司",
+        "period": "2019年1月 – 2019年4月",
+        "bullets": [
+          "监管手套生产质检线，确保严格符合国际客户规格和环保监管要求。",
+          "标准化维护文档并汇编生产线性能追踪指标，以最大化设备运行效率和持续运转时间。"
+        ]
+      },
+      {
+        "role": "生产工程师（实习生）",
+        "company": "Maxter 手套制造有限公司",
+        "period": "2015年10月 – 2015年12月",
+        "bullets": [
+          "监测并维护废水处理设施的运行参数，确保100%符合国家环境安全标准。",
+          "分析化学药剂投加过程中的变量以优化水处理运行，成功实现运营成本节约。"
+        ]
+      }
+    ]
+  },
+  "expertise": {
+    "tag": "专业能力",
+    "title": "核心研究方向",
+    "desc": "交互式仪表盘，展示工业界实践与学术科研成果。",
+    "tabs": [
+      {
+        "title": "代理AI与大语言模型",
+        "subtitle": "智能工作流",
+        "icon": "smart_toy",
+        "badge": "科技创新",
+        "description": "构建并配置先进的人工智能架构，实现复杂决策过程和工作流的自动化。",
+        "bullets": [
+          "在金融科技业务场景中部署并实施人工智能方案。",
+          "集成大语言模型（LLM）与先进的代理框架。",
+          "开发用于自主任务规划和代码执行的专用工作流管道。",
+          "开展流程智能与基于代理的决策制定的应用研究。"
+        ],
+        "tech": ["LLMs", "Agentic Frameworks", "LangChain", "Python", "TypeScript", "Node.js"]
+      },
+      {
+        "title": "数据科学与金融科技",
+        "subtitle": "预测建模",
+        "icon": "query_stats",
+        "badge": "生产实践",
+        "description": "在金融科技环境中研究、设计和维护用于统计和机器学习模型的后端系统。",
+        "bullets": [
+          "设计用于欺诈检测和商户监控的统计及机器学习模型。",
+          "开发网站监控和信用评分模型。",
+          "构建并管理微服务、数据库以及 RESTful API。",
+          "领导门户网站和交互式仪表盘的响应式前端开发。"
+        ],
+        "tech": ["Python", "TypeScript", "PostgreSQL", "Node.js", "Angular", "Docker", "Git"]
+      },
+      {
+        "title": "学术科学研究",
+        "subtitle": "学术贡献",
+        "icon": "science",
+        "badge": "学术科研",
+        "description": "在水文学和环境工程的机器学习应用方面做出了广泛的学术贡献。",
+        "bullets": [
+          "获得工程学博士学位，专注于鲁棒数据融合技术。",
+          "在 Web of Science Q1 期刊发表 5 篇以上学术论文。",
+          "开创深度学习在参考作物蒸腾量估算中的应用。",
+          "将先进的优化算法与支持向量机集成，用于高精度预测。"
+        ],
+        "tech": ["Machine Learning", "Deep Learning", "Data Fusion", "Hydrology", "Statistics"]
+      },
+      {
+        "title": "工程与过程优化",
+        "subtitle": "化学与过程系统",
+        "icon": "engineering",
+        "badge": "工程系统",
+        "description": "运用化学工程原理优化工艺并开发先进的复合膜材料。",
+        "bullets": [
+          "获得工程科学硕士学位，专注于质子交换膜研究。",
+          "优化废水处理厂的过程参数，实现显著运营成本节约。",
+          "监控产品质量合规性，以满足严格的客户及行业标准。",
+          "拥有燃料电池膜、环境建模和过程模拟方面的专业知识。"
+        ],
+        "tech": ["MATLAB", "Aspen HYSYS", "SEM", "Gas Chromatography", "Wastewater Treatment"]
+      }
+    ]
+  },
+  "publications": {
+    "tag": "学术科研成果",
+    "title": "精选学术论文",
+    "desc": "发表在 Web of Science Q1 期刊的高影响因子研究论文。"
+  },
+  "skills": {
+    "tag": "技能专长",
+    "title": "技术专长",
+    "desc": "核心能力、开发工具与语言水平。",
+    "devToolsTitle": "开发工具与核心技术",
+    "langInterestsTitle": "语言水平与学术兴趣",
+    "researchInterestsTitle": "主要研究兴趣"
+  },
+  "contact": {
+    "tag": "取得联系",
+    "title": "携手合作，共创价值",
+    "desc": "欢迎探讨新的合作机会、机器学习集成或学术研究合作。",
+    "emailLabel": "电子邮件",
+    "phoneLabel": "联系电话",
+    "locationLabel": "办公地点",
+    "locationValue": "马来西亚，雪兰莪州",
+    "referencesTitle": "推荐人信息"
+  }
+}

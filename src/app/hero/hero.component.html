@@ -1,0 +1,30 @@
+<canvas id="particleCanvas"></canvas>
+
+<div class="hero-layout">
+  <div class="hero-container">
+    <h1 class="hero-title" id="heroTitle">
+      {{ ts.t().hero.title }}
+    </h1>
+
+    <p class="hero-subtitle">
+      {{ ts.t().hero.subtitle }}
+    </p>
+
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">
+        <span>{{ ts.t().hero.ctaContact }}</span>
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
+      <a href="#publications" class="btn-secondary">
+        <span>{{ ts.t().hero.ctaResearch }}</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-avatar-container">
+    <div class="avatar-glow"></div>
+    <div class="avatar-frame">
+      <img src="profile.jpg" alt="Chia Min Yan" onerror="this.src = 'favicon.png'" />
+    </div>
+  </div>
+</div>

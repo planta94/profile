@@ -1,0 +1,58 @@
+<div class="contact-card">
+  <div class="contact-info-pane">
+    <span class="section-tag">{{ ts.t().contact.tag }}</span>
+    <h2>{{ ts.t().contact.title }}</h2>
+    <p>{{ ts.t().contact.desc }}</p>
+
+    <div class="contact-details">
+      <a href="mailto:chiamy94@gmail.com" class="contact-detail-item">
+        <span class="material-symbols-outlined detail-icon email">mail</span>
+        <div class="detail-text">
+          <span class="detail-label">{{ ts.t().contact.emailLabel }}</span>
+          <span class="detail-val">chiamy94@gmail.com</span>
+        </div>
+      </a>
+
+      <a href="tel:+60192508182" class="contact-detail-item">
+        <span class="material-symbols-outlined detail-icon phone">phone_iphone</span>
+        <div class="detail-text">
+          <span class="detail-label">{{ ts.t().contact.phoneLabel }}</span>
+          <span class="detail-val">+60 192508182</span>
+        </div>
+      </a>
+
+      <div class="contact-detail-item">
+        <span class="material-symbols-outlined detail-icon map">location_on</span>
+        <div class="detail-text">
+          <span class="detail-label">{{ ts.t().contact.locationLabel }}</span>
+          <span class="detail-val">{{ ts.t().contact.locationValue }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-links-pane">
+    <h3>{{ ts.t().contact.referencesTitle }}</h3>
+    <div class="references-list">
+      <div class="reference-item">
+        <strong>Lee Yuen Fai</strong>
+        <span>{{ ts.currentLang() === 'en' ? 'Senior Software Engineer' : '高级软件工程师' }}</span>
+        <span class="ref-sub">PAIDChain Sdn. Bhd. | JuiceUp EV Grid</span>
+        <a href="mailto:bryan.lee@paidchain.my" class="ref-email">bryan.lee@paidchain.my</a>
+      </div>
+
+      <div class="reference-item">
+        <strong>Prof. Ir. Dr. Huang Yuk Feng</strong>
+        <span>{{ ts.currentLang() === 'en' ? 'Professor' : '教授' }}</span>
+        <span class="ref-sub">{{
+          ts.currentLang() === 'en' ? 'Universiti Tunku Abdul Rahman, Malaysia' : '马来西亚拉曼大学'
+        }}</span>
+        <a href="mailto:huangyf@utar.edu.my" class="ref-email">huangyf@utar.edu.my</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>&copy; 2026 Chia Min Yan.</p>
+</footer>

@@ -1,0 +1,48 @@
+<div class="section-header">
+  <span class="section-tag">{{ ts.t().experience.tag }}</span>
+  <h2 class="section-title">{{ ts.t().experience.title }}</h2>
+  <p class="section-desc">{{ ts.t().experience.desc }}</p>
+</div>
+
+<div class="timeline-container">
+  <div class="timeline-line"></div>
+
+  <div class="timeline-list">
+    @for (exp of ts.t().experience.list; track exp.role; let i = $index) {
+      <div class="timeline-item">
+        <!-- Dot indicator in the center line -->
+        <div class="timeline-dot-wrapper">
+          <div class="timeline-dot" [class.active]="i === 0"></div>
+        </div>
+
+        <!-- Experience content card -->
+        <div class="timeline-card">
+          <div class="card-header">
+            <div class="role-group">
+              <h3 class="role-title">{{ exp.role }}</h3>
+              <span class="company-name">{{ exp.company }}</span>
+            </div>
+            <span class="period-badge" [class.current]="i === 0">{{ exp.period }}</span>
+          </div>
+
+          <ul class="experience-bullets">
+            @for (bullet of exp.bullets; track $index) {
+              <li>
+                <span class="bullet-marker"></span>
+                <span>{{ bullet }}</span>
+              </li>
+            }
+          </ul>
+
+          @if (exp.tech) {
+            <div class="tech-stack-row">
+              @for (tech of exp.tech; track tech) {
+                <span class="tech-pill">{{ tech }}</span>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>
