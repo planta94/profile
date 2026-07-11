@@ -1,11 +1,12 @@
 import { Component, input, inject, signal, HostListener, ElementRef } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { TranslationService } from '../services/translation.service';
 
 // Responsive header navigation and language selector component declared as standalone.
 @Component({
   selector: 'app-header',
   standalone: true, // Explicitly marks component as standalone (default in Angular 19+)
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

@@ -98,15 +98,35 @@ const enFallback: TranslationDictionary = {
     desc: 'Bridging the gap between scientific research and commercial application.',
     list: [
       {
-        role: 'Data Scientist',
-        company: 'PAIDChain Sdn. Bhd. & JuiceUp EV Grid Sdn. Bhd.',
-        period: 'July 2022 – Present',
+        role: 'Machine Learning Engineer',
+        company: 'JuiceUp EV Grid Sdn. Bhd.',
+        period: 'July 2026 – Present',
         bullets: [
-          'Lead the end-to-end research, architecture, and deployment of production-grade statistical and machine learning models (fraud detection, merchant anomalies, website monitors, credit scoring) to drive fintech and EV charging operations.',
-          'Spearhead the technical design of scalable backend microservices, database structures, and RESTful APIs, while directing frontend development of responsive web portals and interactive dashboards.',
-          "Initiate and champion the company's generative AI strategy, orchestrating LLM integrations and advanced agentic frameworks to automate complex reasoning and business workflows.",
+          'Lead the end-to-end research, architecture, and deployment of production-grade statistical algorithms and systems (rewards program optimization, EV fleet charging schedules, station utilization) to drive EV charging network operations.',
+          'Spearhead the technical design of scalable backend microservices, rewards database structures, and RESTful APIs, while directing frontend development of responsive EV fleet management portals and interactive customer dashboards.',
+          'Initiate and champion generative AI strategies, orchestrating LLM integrations and advanced agentic frameworks to automate complex reasoning and EV customer support workflows.',
         ],
         tech: ['Node.js', 'TypeScript', 'PostgreSQL', 'Angular', 'Python', 'Docker', 'Git'],
+      },
+      {
+        role: 'Data Scientist',
+        company: 'PAIDChain Sdn. Bhd.',
+        period: 'July 2022 – July 2026',
+        bullets: [
+          'Lead the end-to-end research, architecture, and deployment of production-grade statistical and machine learning models (fraud detection, merchant anomalies, website monitors, credit scoring) to drive fintech operations.',
+          'Spearhead the technical design of scalable backend microservices, database structures, and RESTful APIs, while directing frontend development of responsive fintech web portals and interactive dashboards.',
+          'Initiate and champion generative AI strategies, orchestrating LLM integrations and advanced agentic frameworks to automate complex reasoning and business workflows.',
+        ],
+        tech: [
+          'Node.js',
+          'TypeScript',
+          'PostgreSQL',
+          'Angular',
+          'Python',
+          'Docker',
+          'Git',
+          'LangChain',
+        ],
       },
       {
         role: 'Production Engineer',

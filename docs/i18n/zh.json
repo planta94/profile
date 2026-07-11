@@ -10,7 +10,7 @@
   },
   "hero": {
     "title": "融合工程、数据科学与代理AI",
-    "subtitle": "谢旻言博士是一位工程学博士及数据科学专家，专注于机器学习、大语言模型（LLM）代理方案、全栈微服务以及环境过程建模。",
+    "subtitle": "谢旻言博士专注于机器学习系统、大语言模型（LLM）代理方案、全栈微服务以及环境过程建模。他将科学研究与软件工程相结合，研发生产级的前端与后端软件应用。他在金融科技和智能电动汽车（EV）充电网络领域的预测模型研发与部署方面拥有丰富的工业经验，并在多源数据融合、深度学习应用及化学过程优化等领域发表过多篇Q1级国际学术期刊。",
     "ctaContact": "取得联系",
     "ctaResearch": "精选研究"
   },
@@ -20,19 +20,48 @@
     "desc": "搭建科学研究与商业应用之间的桥梁。",
     "list": [
       {
-        "role": "数据科学家",
-        "company": "PAIDChain 有限公司 & JuiceUp 电动汽车充电网有限公司",
-        "period": "2022年7月 – 至今",
+        "role": "机器学习工程师",
+        "company": "JuiceUp EV Grid Sdn. Bhd.",
+        "period": "2026年7月 – 至今",
         "bullets": [
-          "领导用于金融科技和电动汽车充电网的生产级统计与机器学习模型（欺诈检测、商户监控、网站监察、信用评分）的端到端研究、架构和部署。",
-          "主导可扩展后端微服务、数据库结构及 RESTful API 的技术设计，并指导响应式网页门户和交互式仪表盘的前端开发。",
+          "领导用于电动汽车充电网络（奖励计划优化、电动车队充电调度、充电站利用率）的生产级统计算法与系统的端到端研究、架构和部署。",
+          "主导可扩展后端微服务、奖励数据库结构及 RESTful API 的技术设计，并指导响应式电动车队管理门户和用户交互式仪表盘的前端开发。",
+          "发起并主导生成式人工智能（Generative AI）战略，组织大语言模型（LLM）集成与先进代理框架以自动化复杂推理和电动汽车客户支持工作流。"
+        ],
+        "tech": [
+          "Node.js",
+          "TypeScript",
+          "PostgreSQL",
+          "Angular",
+          "Python",
+          "Docker",
+          "Git",
+          "LangChain"
+        ]
+      },
+      {
+        "role": "数据科学家",
+        "company": "PAIDChain Sdn. Bhd.",
+        "period": "2022年7月 – 2026年7月",
+        "bullets": [
+          "领导用于金融科技生产级统计与机器学习模型（欺诈检测、商户监控、网站监察、信用评分）的端到端研究、架构和部署。",
+          "主导可扩展后端微服务、数据库结构及 RESTful API 的技术设计，并指导响应式金融科技网页门户和交互式仪表盘的前端开发。",
           "发起并主导公司的生成式人工智能（Generative AI）战略，组织大语言模型（LLM）集成与先进代理框架以自动化复杂推理和业务工作流。"
         ],
-        "tech": ["Node.js", "TypeScript", "PostgreSQL", "Angular", "Python", "Docker", "Git"]
+        "tech": [
+          "Node.js",
+          "TypeScript",
+          "PostgreSQL",
+          "Angular",
+          "Python",
+          "Docker",
+          "Git",
+          "LangChain"
+        ]
       },
       {
         "role": "生产工程师",
-        "company": "Maxter 手套制造有限公司",
+        "company": "Maxter Glove Manufacturing Sdn. Bhd.",
         "period": "2019年1月 – 2019年4月",
         "bullets": [
           "监管手套生产质检线，确保严格符合国际客户规格和环保监管要求。",
@@ -41,7 +70,7 @@
       },
       {
         "role": "生产工程师（实习生）",
-        "company": "Maxter 手套制造有限公司",
+        "company": "Maxter Glove Manufacturing Sdn. Bhd.",
         "period": "2015年10月 – 2015年12月",
         "bullets": [
           "监测并维护废水处理设施的运行参数，确保100%符合国家环境安全标准。",

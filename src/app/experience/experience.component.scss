@@ -132,14 +132,14 @@
 .card-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 1.5rem;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 1.2rem;
-  margin-bottom: 1.2rem;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  width: 100%;
 
   @media (max-width: 640px) {
-    flex-direction: column;
     align-items: flex-start;
     gap: 0.75rem;
   }
@@ -164,6 +164,18 @@
   color: var(--google-blue);
 }
 
+.header-right-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  @media (max-width: 640px) {
+    align-self: stretch;
+    justify-content: space-between;
+    margin-top: 0.25rem;
+  }
+}
+
 .period-badge {
   font-size: 0.75rem;
   font-weight: 700;
@@ -176,6 +188,43 @@
   &.current {
     color: var(--google-green);
     background-color: rgba(52, 168, 83, 0.08);
+  }
+}
+
+.expand-icon {
+  font-size: 1.4rem;
+  color: var(--text-tertiary);
+  transition:
+    transform var(--transition-normal),
+    color var(--transition-normal);
+
+  &.rotated {
+    transform: rotate(180deg);
+    color: var(--google-blue);
+  }
+}
+
+/* Collapsible wrapper using CSS Grid rows height transition */
+.card-body-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.expanded {
+    grid-template-rows: 1fr;
+  }
+}
+
+.card-body-content {
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+
+  .card-body-wrapper.expanded & {
+    opacity: 1;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 1.2rem;
   }
 }
 
@@ -232,5 +281,20 @@
     background-color: rgba(26, 115, 232, 0.06);
     color: var(--google-blue);
     border-color: rgba(26, 115, 232, 0.1);
+  }
+}
+
+@media print {
+  .card-body-wrapper {
+    grid-template-rows: 1fr !important;
+  }
+  .card-body-content {
+    opacity: 1 !important;
+    padding-top: 1.2rem !important;
+    border-top: 1px solid var(--border-color) !important;
+    margin-top: 1.2rem !important;
+  }
+  .expand-icon {
+    display: none !important;
   }
 }

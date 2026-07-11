@@ -10,7 +10,7 @@
   },
   "hero": {
     "title": "Menghubungkan Kejuruteraan, Sains Data, dan AI Agen",
-    "subtitle": "Dr. Chia Min Yan ialah seorang Jurutera PhD dan Saintis Data yang pakar dalam pembelajaran mesin, penyelesaian LLM agen, mikroperkhidmatan tindanan penuh, dan pemodelan proses alam sekitar.",
+    "subtitle": "Dr. Chia Min Yan pakar dalam sistem pembelajaran mesin, penyelesaian LLM agen, mikroperkhidmatan tindanan penuh, dan pemodelan proses alam sekitar. Menggabungkan penyelidikan saintifik dengan kejuruteraan perisian, beliau membangunkan aplikasi perisian frontend dan backend gred pengeluaran. Pengalaman beliau merangkumi reka bentuk dan penggunaan model ramalan dalam industri fintech dan rangkaian pengecasan EV, serta penyelidikan akademik yang diterbitkan dalam jurnal Q1 bagi bidang fusi data, pembelajaran mendalam, dan pengoptimuman proses kimia.",
     "ctaContact": "Hubungi Saya",
     "ctaResearch": "Penyelidikan Terpilih"
   },
@@ -20,15 +20,44 @@
     "desc": "Merapatkan jurang antara penyelidikan saintifik dan aplikasi komersial.",
     "list": [
       {
-        "role": "Data Scientist",
-        "company": "PAIDChain Sdn. Bhd. & JuiceUp EV Grid Sdn. Bhd.",
-        "period": "Julai 2022 – Kini",
+        "role": "Machine Learning Engineer",
+        "company": "JuiceUp EV Grid Sdn. Bhd.",
+        "period": "Julai 2026 – Kini",
         "bullets": [
-          "Mengetuai penyelidikan end-to-end, seni bina, dan penggunaan model pembelajaran mesin dan statistik gred pengeluaran (pengesanan penipuan, anomali peniaga, pemantau tapak web, skor kredit) untuk memacu operasi fintech dan pengecasan EV.",
-          "Menerajui reka bentuk teknikal mikroperkhidmatan backend berskala, struktur pangkalan data, dan API RESTful, sambil mengarahkan pembangunan portal web responsif dan papan pemuka interaktif di frontend.",
+          "Mengetuai penyelidikan end-to-end, seni bina, dan penggunaan algoritma dan sistem statistik gred pengeluaran (pengoptimuman program ganjaran, jadual pengecasan armada EV, penggunaan stesen) untuk memacu operasi rangkaian pengecasan EV.",
+          "Menerajui reka bentuk teknikal mikroperkhidmatan backend berskala, struktur pangkalan data ganjaran, dan API RESTful, sambil mengarahkan pembangunan portal pengurusan armada EV responsif dan papan pemuka interaktif pengguna di frontend.",
+          "Memulakan dan memperjuangkan strategi AI generatif, menyusun penyepaduan LLM dan rangka kerja agen termaju untuk mengautomasikan penaakulan kompleks dan aliran kerja sokongan pelanggan EV."
+        ],
+        "tech": [
+          "Node.js",
+          "TypeScript",
+          "PostgreSQL",
+          "Angular",
+          "Python",
+          "Docker",
+          "Git",
+          "LangChain"
+        ]
+      },
+      {
+        "role": "Data Scientist",
+        "company": "PAIDChain Sdn. Bhd.",
+        "period": "Julai 2022 – Julai 2026",
+        "bullets": [
+          "Mengetuai penyelidikan end-to-end, seni bina, dan penggunaan model pembelajaran mesin dan statistik gred pengeluaran (pengesanan penipuan, anomali peniaga, pemantau tapak web, skor kredit) untuk memacu operasi fintech.",
+          "Menerajui reka bentuk teknikal mikroperkhidmatan backend berskala, struktur pangkalan data, dan API RESTful, sambil mengarahkan pembangunan portal web responsif dan papan pemuka interaktif di frontend untuk perkhidmatan fintech.",
           "Memulakan dan memperjuangkan strategi AI generatif syarikat, menyusun penyepaduan LLM dan rangka kerja agen termaju untuk mengautomasikan penaakulan kompleks dan aliran kerja perniagaan."
         ],
-        "tech": ["Node.js", "TypeScript", "PostgreSQL", "Angular", "Python", "Docker", "Git"]
+        "tech": [
+          "Node.js",
+          "TypeScript",
+          "PostgreSQL",
+          "Angular",
+          "Python",
+          "Docker",
+          "Git",
+          "LangChain"
+        ]
       },
       {
         "role": "Production Engineer",

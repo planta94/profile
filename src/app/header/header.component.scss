@@ -5,8 +5,8 @@
   top: clamp(0.75rem, 2vw, 1.5rem);
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100% - var(--spacing-container));
-  max-width: 1440px;
+  width: calc(100% - var(--spacing-container) * 2);
+  max-width: calc(90% - var(--spacing-container) * 2);
   height: 4.5rem;
   background-color: var(--glass-bg);
   backdrop-filter: blur(12px) saturate(180%);
@@ -41,7 +41,7 @@
   text-decoration: none;
   color: var(--text-primary);
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   letter-spacing: 0.5px;
 
   &-avatar {
@@ -69,7 +69,7 @@
 .nav-link {
   text-decoration: none;
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: var(--radius-full);
@@ -113,7 +113,7 @@
   padding: 0 0.8rem;
   height: 2.1rem;
   color: var(--text-primary);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 700;
   font-family: inherit;
   cursor: pointer;
@@ -229,7 +229,7 @@
   color: #ffffff;
   padding: 0.6rem 1.2rem;
   border-radius: var(--radius-full);
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
   box-shadow: var(--shadow-sm);
   transition:

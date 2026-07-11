@@ -306,8 +306,8 @@ def build_pdf():
         'DocTitle',
         parent=styles['Normal'],
         fontName=font_names['bold'],
-        fontSize=24,
-        leading=26,
+        fontSize=28,
+        leading=30,
         textColor=PRIMARY
     )
     
@@ -315,8 +315,8 @@ def build_pdf():
         'DocSubtitle',
         parent=styles['Normal'],
         fontName=font_names['bold'],
-        fontSize=10.5,
-        leading=13,
+        fontSize=12,
+        leading=15,
         textColor=ACCENT
     )
     
@@ -435,8 +435,8 @@ def build_pdf():
         'HeaderContact',
         parent=styles['Normal'],
         fontName=font_names['reg'],
-        fontSize=8,
-        leading=11.5,
+        fontSize=9,
+        leading=13,
         textColor=TEXT_MUTED,
         alignment=2 # Right-aligned
     )
@@ -534,14 +534,29 @@ def build_pdf():
     main_p1.append(make_section_header("PROFESSIONAL EXPERIENCE"))
     main_p1.append(Spacer(1, 8))
     
-    # Job 1
+    # Job 1: Juice Up
     job1_header = make_job_header(
-        "Data Scientist",
-        "PAIDChain Sdn. Bhd. &amp; Juice Up EV Grid Sdn. Bhd.",
-        "July 2022 – Present (PAIDChain) &nbsp;|&nbsp; Jan 2024 – Present (JuiceUp)",
+        "Machine Learning Engineer",
+        "Juice Up EV Grid Sdn. Bhd.",
+        "July 2026 – Present",
         font_names
     )
     main_p1.extend(job1_header)
+    main_p1.append(Spacer(1, 4))
+    main_p1.append(make_bullet_point("<b>Algorithms &amp; Systems:</b> Lead the end-to-end research, architecture, and deployment of production-grade statistical algorithms and systems (rewards program optimization, EV fleet charging schedules, station utilization) to drive EV charging network operations.", bullet_style, bullet_width=10, text_width=364))
+    main_p1.append(make_bullet_point("<b>Full Stack &amp; Backend Architecture:</b> Spearhead the technical design of scalable backend microservices, rewards database structures, and RESTful APIs, while directing frontend development of responsive EV fleet management portals and interactive customer dashboards.", bullet_style, bullet_width=10, text_width=364))
+    main_p1.append(make_bullet_point("<b>Generative AI Initiatives:</b> Champion corporate AI strategies, orchestrating custom LLM integrations and advanced agentic frameworks to automate complex reasoning and EV customer support workflows.", bullet_style, bullet_width=10, text_width=364))
+    main_p1.append(Paragraph("<b>Technologies:</b> Python, TypeScript, Node.js, Angular, PostgreSQL, Git, Docker", tech_badge_style))
+    main_p1.append(Spacer(1, 10))
+    
+    # Job 1.5: PAIDChain
+    job1_5_header = make_job_header(
+        "Data Scientist",
+        "PAIDChain Sdn. Bhd.",
+        "July 2022 – July 2026",
+        font_names
+    )
+    main_p1.extend(job1_5_header)
     main_p1.append(Spacer(1, 4))
     main_p1.append(make_bullet_point("<b>Machine Learning Engineering:</b> Research, build, and deploy core enterprise statistical models including real-time fraud detection systems, merchant risk anomaly trackers, system monitors, and algorithmic credit scoring structures.", bullet_style, bullet_width=10, text_width=364))
     main_p1.append(make_bullet_point("<b>Full Stack Architecture:</b> Lead the design and implementation of highly scalable backend RESTful APIs, database structures, and responsive web portals/interactive dashboards using Node.js, TypeScript, PostgreSQL, and Angular.", bullet_style, bullet_width=10, text_width=364))

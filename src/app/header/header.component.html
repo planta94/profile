@@ -88,8 +88,8 @@
         }
       </div>
 
-      <a href="CV.pdf" download="Chia_Min_Yan_CV.pdf" class="btn-cv">
-        <span class="material-symbols-outlined">download</span>
+      <a routerLink="/cv" [queryParams]="{ lang: ts.currentLang() }" target="_blank" class="btn-cv">
+        <span class="material-symbols-outlined">description</span>
         <span class="btn-cv-text">{{ ts.t().header.downloadCv }}</span>
       </a>
     </div>

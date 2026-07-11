@@ -12,35 +12,55 @@
       <div class="timeline-item">
         <!-- Dot indicator in the center line -->
         <div class="timeline-dot-wrapper">
-          <div class="timeline-dot" [class.active]="i === 0"></div>
+          <div class="timeline-dot" [class.active]="i === 0 || expandedStates()[i]"></div>
         </div>
 
         <!-- Experience content card -->
-        <div class="timeline-card">
-          <div class="card-header">
+        <div class="timeline-card" [class.expanded]="expandedStates()[i]">
+          <!-- Clickable header to toggle expansion -->
+          <div
+            class="card-header"
+            (click)="toggleExpand(i)"
+            role="button"
+            tabindex="0"
+            (keydown.enter)="toggleExpand(i)"
+          >
             <div class="role-group">
               <h3 class="role-title">{{ exp.role }}</h3>
               <span class="company-name">{{ exp.company }}</span>
             </div>
-            <span class="period-badge" [class.current]="i === 0">{{ exp.period }}</span>
+            <div class="header-right-group">
+              <span class="period-badge" [class.current]="i === 0">{{ exp.period }}</span>
+              <span
+                class="material-symbols-outlined expand-icon"
+                [class.rotated]="expandedStates()[i]"
+              >
+                expand_more
+              </span>
+            </div>
           </div>
 
-          <ul class="experience-bullets">
-            @for (bullet of exp.bullets; track $index) {
-              <li>
-                <span class="bullet-marker"></span>
-                <span>{{ bullet }}</span>
-              </li>
-            }
-          </ul>
+          <!-- Collapsible body wrapper using CSS Grid transition -->
+          <div class="card-body-wrapper" [class.expanded]="expandedStates()[i]">
+            <div class="card-body-content">
+              <ul class="experience-bullets">
+                @for (bullet of exp.bullets; track $index) {
+                  <li>
+                    <span class="bullet-marker"></span>
+                    <span>{{ bullet }}</span>
+                  </li>
+                }
+              </ul>
 
-          @if (exp.tech) {
-            <div class="tech-stack-row">
-              @for (tech of exp.tech; track tech) {
-                <span class="tech-pill">{{ tech }}</span>
+              @if (exp.tech) {
+                <div class="tech-stack-row">
+                  @for (tech of exp.tech; track tech) {
+                    <span class="tech-pill">{{ tech }}</span>
+                  }
+                </div>
               }
             </div>
-          }
+          </div>
         </div>
       </div>
     }
