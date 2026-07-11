@@ -13,7 +13,12 @@ describe('HeaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HeaderComponent],
-      providers: [provideRouter([]), provideHttpClient(), provideHttpClientTesting(), TranslationService],
+      providers: [
+        provideRouter([]),
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        TranslationService,
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);
