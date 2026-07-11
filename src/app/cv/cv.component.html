@@ -11,7 +11,9 @@
       Melayu
     </button>
   </div>
-  <button class="btn btn-print" (click)="printPage()">Print / Save as PDF</button>
+  <button class="btn btn-print" (click)="printPage()" [disabled]="isGenerating">
+    {{ isGenerating ? 'Generating PDF...' : 'Download PDF' }}
+  </button>
 </div>
 
 <!-- PAGE 1 -->

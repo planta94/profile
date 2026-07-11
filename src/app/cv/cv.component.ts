@@ -1,5 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { TranslationService } from '../services/translation.service';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 
 @Component({
   selector: 'app-cv',
@@ -10,6 +12,7 @@ import { TranslationService } from '../services/translation.service';
 })
 export class CvComponent {
   protected readonly ts = inject(TranslationService);
+  protected isGenerating = false;
 
   // Core skills listed in CV sidebar
   protected readonly coreSkills = [
@@ -153,8 +156,51 @@ export class CvComponent {
     this.ts.setLanguage(lang);
   }
 
-  printPage() {
-    window.print();
+  /** Render each .cv-page as a high-res canvas image, package into a jsPDF and trigger download.
+   *  This bypasses Chrome's Skia PDF text renderer which causes thick/doubled glyph artifacts. */
+  async printPage() {
+    this.isGenerating = true;
+    try {
+      const pages = document.querySelectorAll('.cv-page');
+      // A4 dimensions in points (1pt = 1/72 inch)
+      const pdfWidth = 595.28;
+      const pdfHeight = 841.89;
+      const pdf = new jsPDF({ orientation: 'portrait', unit: 'pt', format: 'a4', compress: true });
+
+      for (let i = 0; i < pages.length; i++) {
+        const pageEl = pages[i] as HTMLElement;
+
+        // Temporarily remove desktop scaling transform for accurate capture
+        const origTransform = pageEl.style.transform;
+        const origTransformOrigin = pageEl.style.transformOrigin;
+        pageEl.style.transform = 'none';
+        pageEl.style.transformOrigin = 'top left';
+
+        // Wait for browser reflow so html2canvas captures at true size
+        await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+
+        const canvas = await html2canvas(pageEl, {
+          scale: 4,
+          useCORS: true,
+          logging: false,
+          backgroundColor: '#ffffff',
+          windowWidth: pageEl.scrollWidth,
+          windowHeight: pageEl.scrollHeight,
+        });
+
+        // Restore original transform
+        pageEl.style.transform = origTransform;
+        pageEl.style.transformOrigin = origTransformOrigin;
+
+        const imgData = canvas.toDataURL('image/png');
+        if (i > 0) pdf.addPage();
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      }
+
+      pdf.save('CV_Chia_Min_Yan.pdf');
+    } finally {
+      this.isGenerating = false;
+    }
   }
 
   formatAuthors(authors: string[]): string {

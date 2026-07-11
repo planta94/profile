@@ -168,3 +168,80 @@ body {
   background-color: rgba(26, 112, 232, 0.15);
   color: var(--google-blue);
 }
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  
+  /* Force system fonts and reset rendering issues on all elements */
+  *, 
+  body, 
+  html, 
+  div, 
+  p, 
+  span, 
+  h1, 
+  h2, 
+  h3, 
+  a, 
+  li, 
+  ul, 
+  td, 
+  th {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    text-shadow: none !important;
+    -webkit-text-stroke: 0px transparent !important;
+    filter: none !important;
+    text-rendering: geometricPrecision !important;
+  }
+  
+  app-cv {
+    background-color: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .cv-page {
+    margin: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    page-break-after: always;
+    break-after: always;
+    transform: none !important;
+
+    &:last-of-type {
+      page-break-after: avoid !important;
+      break-after: avoid !important;
+    }
+  }
+  
+  .sidebar {
+    background-color: #f4f6f8 !important;
+    background-image: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  .divider {
+    background-color: rgba(0, 0, 0, 0.06) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  .tech-badge {
+    background-color: #f1f3f4 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
+
