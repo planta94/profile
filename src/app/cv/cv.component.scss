@@ -44,6 +44,22 @@
       break-after: avoid !important;
     }
   }
+  .sidebar {
+    background-color: #f4f6f8 !important;
+    background-image: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .divider {
+    background-color: rgba(0, 0, 0, 0.06) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .tech-badge {
+    background-color: #f1f3f4 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
   .no-print {
     display: none !important;
   }
