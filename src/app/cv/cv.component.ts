@@ -144,7 +144,7 @@ export class CvComponent {
           year: '2017 – 2019',
         },
         {
-          degree: 'Bachelor of Chemical Engineering (CGPA 3.8758, Distinction)',
+          degree: 'Bachelor of Engineering (Hons.) Chemical Engineering (CGPA 3.8758, Distinction)',
           school: 'Universiti Tunku Abdul Rahman (UTAR), Malaysia',
           year: '2013 – 2016',
         },

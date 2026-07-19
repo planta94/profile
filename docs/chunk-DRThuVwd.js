@@ -1,0 +1,1 @@
+import {M as MQ}from'./main-MBSHTTLT.js';var chunkL36UAQ6U = MQ();export{chunkL36UAQ6U as default};

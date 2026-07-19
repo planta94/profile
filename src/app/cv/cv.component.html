@@ -28,7 +28,7 @@
     <div>
       <div class="sidebar-section-title">
         {{
-          ts.currentLang() === 'zh' ? '联系方式' : ts.currentLang() === 'ms' ? 'Hubungi' : 'Contact'
+        ts.currentLang() === 'zh' ? '联系方式' : ts.currentLang() === 'ms' ? 'Hubungi' : 'Contact'
         }}
       </div>
       <div class="contact-item">
@@ -49,19 +49,19 @@
     <div>
       <div class="sidebar-section-title">
         {{
-          ts.currentLang() === 'zh'
-            ? '教育背景'
-            : ts.currentLang() === 'ms'
-              ? 'Pendidikan'
-              : 'Education'
+        ts.currentLang() === 'zh'
+        ? '教育背景'
+        : ts.currentLang() === 'ms'
+        ? 'Pendidikan'
+        : 'Education'
         }}
       </div>
       @for (edu of educationHistory; track edu.degree) {
-        <div class="edu-item">
-          <div class="edu-degree">{{ edu.degree }}</div>
-          <div class="edu-school">{{ edu.school }}</div>
-          <div class="edu-year">{{ edu.year }}</div>
-        </div>
+      <div class="edu-item">
+        <div class="edu-degree">{{ edu.degree }}</div>
+        <div class="edu-school">{{ edu.school }}</div>
+        <div class="edu-year">{{ edu.year }}</div>
+      </div>
       }
     </div>
 
@@ -69,16 +69,16 @@
     <div>
       <div class="sidebar-section-title">
         {{
-          ts.currentLang() === 'zh'
-            ? '专业技能'
-            : ts.currentLang() === 'ms'
-              ? 'Kemahiran Utama'
-              : 'Core Skills'
+        ts.currentLang() === 'zh'
+        ? '专业技能'
+        : ts.currentLang() === 'ms'
+        ? 'Kemahiran Utama'
+        : 'Core Skills'
         }}
       </div>
       <div class="skill-badges">
         @for (skill of coreSkills; track skill) {
-          <span class="skill-badge">{{ skill }}</span>
+        <span class="skill-badge">{{ skill }}</span>
         }
       </div>
     </div>
@@ -97,11 +97,11 @@
       <h1 class="name">Chia Min Yan</h1>
       <p class="tagline">
         {{
-          ts.currentLang() === 'zh'
-            ? '工程学博士 | 数据科学家 | 机器学习工程师'
-            : ts.currentLang() === 'ms'
-              ? 'PhD dalam Kejuruteraan | Saintis Data | Jurutera Pembelajaran Mesin'
-              : 'PhD in Engineering | Data Scientist | Machine Learning Engineer'
+        ts.currentLang() === 'zh'
+        ? '工程学博士 | 数据科学家 | 机器学习工程师'
+        : ts.currentLang() === 'ms'
+        ? 'PhD dalam Kejuruteraan | Saintis Data | Jurutera Pembelajaran Mesin'
+        : 'PhD in Engineering | Data Scientist | Machine Learning Engineer'
         }}
       </p>
     </div>
@@ -109,15 +109,13 @@
     <!-- Profile Summary -->
     <div>
       <div class="section-title">{{ ts.t().header.about }}</div>
-      <p
-        style="
+      <p style="
           font-size: 8.5pt;
           line-height: 1.45;
           margin: 0;
           color: var(--text-primary);
           text-align: justify;
-        "
-      >
+        ">
         {{ ts.t().hero.subtitle }}
       </p>
     </div>
@@ -127,29 +125,29 @@
       <div class="section-title">{{ ts.t().header.experience }}</div>
       <div>
         @for (exp of ts.t().experience.list; track exp.role) {
-          <div class="job-item">
-            <div class="job-header">
-              <div class="role-company-box">
-                <div class="job-role">{{ exp.role }}</div>
-                <div class="job-company">{{ exp.company }}</div>
-              </div>
-              <div class="job-period">{{ exp.period }}</div>
+        <div class="job-item">
+          <div class="job-header">
+            <div class="role-company-box">
+              <div class="job-role">{{ exp.role }}</div>
+              <div class="job-company">{{ exp.company }}</div>
             </div>
-            @if (exp.bullets) {
-              <ul class="bullets">
-                @for (bullet of exp.bullets; track bullet) {
-                  <li>{{ bullet }}</li>
-                }
-              </ul>
+            <div class="job-period">{{ exp.period }}</div>
+          </div>
+          @if (exp.bullets) {
+          <ul class="bullets">
+            @for (bullet of exp.bullets; track bullet) {
+            <li>{{ bullet }}</li>
             }
-            @if (exp.tech) {
-              <div class="tech-list">
-                @for (tech of exp.tech; track tech) {
-                  <span class="tech-badge">{{ tech }}</span>
-                }
-              </div>
+          </ul>
+          }
+          @if (exp.tech) {
+          <div class="tech-list">
+            @for (tech of exp.tech; track tech) {
+            <span class="tech-badge">{{ tech }}</span>
             }
           </div>
+          }
+        </div>
         }
       </div>
     </div>
@@ -165,10 +163,10 @@
       <div class="sidebar-section-title">{{ professionalAffiliations.title }}</div>
       <div style="display: flex; flex-direction: column; gap: 8pt">
         @for (aff of professionalAffiliations.list; track aff.name) {
-          <div class="edu-item" style="margin-bottom: 0">
-            <div class="edu-degree" style="font-size: 7.6pt">{{ aff.name }}</div>
-            <div class="edu-year" style="font-size: 7.2pt">{{ aff.year }}</div>
-          </div>
+        <div class="edu-item" style="margin-bottom: 0">
+          <div class="edu-degree" style="font-size: 7.6pt">{{ aff.name }}</div>
+          <div class="edu-year" style="font-size: 7.2pt">{{ aff.year }}</div>
+        </div>
         }
       </div>
     </div>
@@ -187,22 +185,22 @@
       <div class="section-title">{{ researchExperience.title }}</div>
       <div>
         @for (exp of researchExperience.list; track exp.period) {
-          <div class="job-item">
-            <div class="job-header">
-              <div class="role-company-box">
-                <div class="job-role">{{ exp.role }}</div>
-                <div class="job-company">{{ exp.company }}</div>
-              </div>
-              <div class="job-period">{{ exp.period }}</div>
+        <div class="job-item">
+          <div class="job-header">
+            <div class="role-company-box">
+              <div class="job-role">{{ exp.role }}</div>
+              <div class="job-company">{{ exp.company }}</div>
             </div>
-            @if (exp.bullets) {
-              <ul class="bullets">
-                @for (bullet of exp.bullets; track bullet) {
-                  <li>{{ bullet }}</li>
-                }
-              </ul>
-            }
+            <div class="job-period">{{ exp.period }}</div>
           </div>
+          @if (exp.bullets) {
+          <ul class="bullets">
+            @for (bullet of exp.bullets; track bullet) {
+            <li>{{ bullet }}</li>
+            }
+          </ul>
+          }
+        </div>
         }
       </div>
     </div>
@@ -212,11 +210,10 @@
       <div class="section-title">{{ ts.t().header.publications }}</div>
       <ul class="bullets" style="padding-left: 11pt; margin: 5pt 0 0 0">
         @for (pub of publications; track pub.title) {
-          <li style="margin-bottom: 3.5pt; font-size: 8pt; line-height: 1.4; text-align: justify">
-            <span [innerHTML]="formatAuthors(pub.authors)"></span>
-            ({{ pub.year }}). {{ pub.title }}. <i>{{ pub.journal }}</i
-            >, {{ pub.tier }} Journal.
-          </li>
+        <li style="margin-bottom: 3.5pt; font-size: 8pt; line-height: 1.4; text-align: justify">
+          <span [innerHTML]="formatAuthors(pub.authors)"></span>
+          ({{ pub.year }}). {{ pub.title }}. <i>{{ pub.journal }}</i>, {{ pub.tier }} Journal.
+        </li>
         }
       </ul>
     </div>
@@ -226,30 +223,25 @@
       <div class="section-title">{{ extracurricularActivities.title }}</div>
       <ul class="bullets" style="padding-left: 11pt; margin: 5pt 0 0 0">
         @for (act of extracurricularActivities.list; track act.activity) {
-          <li style="margin-bottom: 3.5pt; font-size: 8pt; line-height: 1.4; text-align: justify">
-            <div
-              style="
+        <li style="margin-bottom: 3.5pt; font-size: 8pt; line-height: 1.4; text-align: justify">
+          <div style="
                 display: flex;
                 justify-content: space-between;
                 align-items: flex-start;
                 width: 100%;
-              "
-            >
-              <span style="font-weight: 500; text-align: left; padding-right: 12pt">{{
-                act.activity
+              ">
+            <span style="font-weight: 500; text-align: left; padding-right: 12pt">{{
+              act.activity
               }}</span>
-              <span
-                style="
+            <span style="
                   font-size: 8pt;
                   font-weight: 700;
                   color: var(--text-secondary);
                   white-space: nowrap;
                   flex-shrink: 0;
-                "
-                >{{ act.year }}</span
-              >
-            </div>
-          </li>
+                ">{{ act.year }}</span>
+          </div>
+        </li>
         }
       </ul>
     </div>
@@ -262,39 +254,32 @@
           <div class="ref-name">Lee Yuen Fai</div>
           <div class="ref-title">
             {{
-              ts.currentLang() === 'zh'
-                ? '高级软件工程师'
-                : ts.currentLang() === 'ms'
-                  ? 'Jurutera Perisian Kanan'
-                  : 'Senior Software Engineer'
+            ts.currentLang() === 'zh'
+            ? '高级软件工程师'
+            : ts.currentLang() === 'ms'
+            ? 'Jurutera Perisian Kanan'
+            : 'Senior Software Engineer'
             }}
           </div>
           <div class="ref-comp">Juice Up EV Grid Sdn. Bhd.</div>
-          <a href="mailto:bryan.lee@paidchain.my" class="ref-email" style="display: block"
-            >bryan.lee@paidchain.my</a
-          >
-          <a href="tel:+60122386025" class="ref-email" style="display: block; margin-top: 1pt"
-            >+60 122386025</a
-          >
+          <a href="mailto:bryan.lee@juiceuptoday.com" class="ref-email"
+            style="display: block">bryan.lee@juiceuptoday.com</a>
+          <a href="tel:+60122386025" class="ref-email" style="display: block; margin-top: 1pt">+60 122386025</a>
         </div>
         <div class="ref-card">
           <div class="ref-name">Professor Ir. Dr. Huang Yuk Feng</div>
           <div class="ref-title">
             {{
-              ts.currentLang() === 'zh'
-                ? '教授'
-                : ts.currentLang() === 'ms'
-                  ? 'Profesor'
-                  : 'Professor'
+            ts.currentLang() === 'zh'
+            ? '教授'
+            : ts.currentLang() === 'ms'
+            ? 'Profesor'
+            : 'Professor'
             }}
           </div>
           <div class="ref-comp">Universiti Tunku Abdul Rahman, Malaysia</div>
-          <a href="mailto:huangyf@utar.edu.my" class="ref-email" style="display: block"
-            >huangyf@utar.edu.my</a
-          >
-          <a href="tel:+60129272332" class="ref-email" style="display: block; margin-top: 1pt"
-            >+60 129272332</a
-          >
+          <a href="mailto:huangyf@utar.edu.my" class="ref-email" style="display: block">huangyf@utar.edu.my</a>
+          <a href="tel:+60129272332" class="ref-email" style="display: block; margin-top: 1pt">+60 129272332</a>
         </div>
       </div>
     </div>
