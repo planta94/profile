@@ -689,14 +689,14 @@ def build_pdf():
     
     # Bachelor's
     bs_header = make_education_header(
-        "Bachelor of Engineering (Honours) Chemical Engineering",
+        "Bachelor of Engineering (Hons.) Chemical Engineering",
         "Universiti Tunku Abdul Rahman, Malaysia",
         "2013 – 2016",
         font_names
     )
     main_p2.extend(bs_header)
     main_p2.append(Spacer(1, 3))
-    main_p2.append(Paragraph("<b>CGPA: 3.8758 / 4.0000 (First Class Honours with Distinction)</b>", ParagraphStyle('CGPAStyle', parent=body_style, fontName=font_names['bold'], fontSize=8, textColor=ACCENT)))
+    main_p2.append(Paragraph("<b>CGPA: 3.8758 / 4.0000 (Distinction)</b>", ParagraphStyle('CGPAStyle', parent=body_style, fontName=font_names['bold'], fontSize=8, textColor=ACCENT)))
     main_p2.append(Spacer(1, 14))
     
     main_p2.append(make_section_header("SELECTED PUBLICATIONS"))
