@@ -6,18 +6,18 @@
   --bg-secondary: #ffffff;
   --text-primary: #1f1f1f;
   --text-secondary: #5f6368;
-  --text-tertiary: #80868b;
+  --text-tertiary: #5f6368; /* was #80868b (3.6:1 on white); WCAG AA needs 4.5:1 */
   --border-color: rgba(0, 0, 0, 0.06);
   --border-color-hover: rgba(0, 0, 0, 0.12);
   --glass-bg: rgba(255, 255, 255, 0.75);
   --glass-bg-hover: rgba(255, 255, 255, 0.85);
 
-  /* Google Inspired Accents */
-  --google-blue: #1a73e8;
+  /* Google Inspired Accents (blue/green use the darker Google shades so text on light tints passes AA) */
+  --google-blue: #1967d2;
   --google-red: #ea4335;
   --google-yellow: #f9ab00;
-  --google-green: #34a853;
-  --accent-primary: #1a73e8;
+  --google-green: #188038;
+  --accent-primary: #1967d2;
 
   /* Shadows */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -174,21 +174,21 @@ body {
     size: A4;
     margin: 0;
   }
-  
+
   /* Force system fonts and reset rendering issues on all elements */
-  *, 
-  body, 
-  html, 
-  div, 
-  p, 
-  span, 
-  h1, 
-  h2, 
-  h3, 
-  a, 
-  li, 
-  ul, 
-  td, 
+  *,
+  body,
+  html,
+  div,
+  p,
+  span,
+  h1,
+  h2,
+  h3,
+  a,
+  li,
+  ul,
+  td,
   th {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -198,13 +198,13 @@ body {
     filter: none !important;
     text-rendering: geometricPrecision !important;
   }
-  
+
   app-cv {
     background-color: #ffffff !important;
     padding: 0 !important;
     margin: 0 !important;
   }
-  
+
   .cv-page {
     margin: 0 !important;
     box-shadow: none !important;
@@ -220,28 +220,27 @@ body {
       break-after: avoid !important;
     }
   }
-  
+
   .sidebar {
     background-color: #f4f6f8 !important;
     background-image: none !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
-  
+
   .divider {
     background-color: rgba(0, 0, 0, 0.06) !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
-  
+
   .tech-badge {
     background-color: #f1f3f4 !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
-  
+
   .no-print {
     display: none !important;
   }
 }
-

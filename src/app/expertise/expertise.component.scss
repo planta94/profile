@@ -212,6 +212,9 @@
 }
 
 .indicator-dot {
+  appearance: none;
+  padding: 0;
+  border: none;
   width: 6px;
   height: 6px;
   background-color: var(--text-tertiary);
@@ -225,6 +228,11 @@
     background-color: var(--google-blue);
     opacity: 1;
     border-radius: var(--radius-full);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--google-blue);
+    outline-offset: 2px;
   }
 }
 

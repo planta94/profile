@@ -23,7 +23,9 @@
             (click)="toggleExpand(i)"
             role="button"
             tabindex="0"
+            [attr.aria-expanded]="!!expandedStates()[i]"
             (keydown.enter)="toggleExpand(i)"
+            (keydown.space)="$event.preventDefault(); toggleExpand(i)"
           >
             <div class="role-group">
               <h3 class="role-title">{{ exp.role }}</h3>

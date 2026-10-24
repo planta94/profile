@@ -1,0 +1,723 @@
+{
+  "baseRef": "2d85d25e66341bdbf0bbb0b50aa3ea94cf51abaf",
+  "changedOnly": false,
+  "changedFiles": [
+    ".agent/skills/veriscribe/SKILL.md",
+    ".gitignore",
+    "FE_TESTING_AND_LIVING_MANUAL_GUIDE.md",
+    "angular.json",
+    "docs/3rdpartylicenses.txt",
+    "docs/chunk-BGWdXnsm.js",
+    "docs/chunk-BVMr5EPH.js",
+    "docs/chunk-CK6EPcG3.js",
+    "docs/chunk-Cycsqxa5.js",
+    "docs/chunk-DFJGGUR0.js",
+    "docs/chunk-DRThuVwd.js",
+    "docs/chunk-DUfGDDzD.js",
+    "docs/chunk-DsWCIkbT.js",
+    "docs/index.html",
+    "docs/main-EOMPAMJW.js",
+    "docs/main-MBSHTTLT.js",
+    "docs/main-OPU5SY3Z.js",
+    "docs/manual-artifacts/en-US/user/manual-cv/manual-steps.json",
+    "docs/manual-artifacts/en-US/user/manual-cv/screenshots/step-01-mobile.png",
+    "docs/manual-artifacts/en-US/user/manual-cv/screenshots/step-01.png",
+    "docs/manual-artifacts/en-US/user/manual-cv/screenshots/step-02-mobile.png",
+    "docs/manual-artifacts/en-US/user/manual-cv/screenshots/step-02.png",
+    "docs/manual-artifacts/en-US/user/manual-cv/screenshots/step-03-mobile.png",
+    "docs/manual-artifacts/en-US/user/manual-cv/screenshots/step-03.png",
+    "docs/manual-artifacts/en-US/user/manual-cv/screenshots/step-04-mobile.png",
+    "docs/manual-artifacts/en-US/user/manual-cv/screenshots/step-04.png",
+    "docs/manual-artifacts/en-US/user/manual-cv/screenshots/step-05-mobile.png",
+    "docs/manual-artifacts/en-US/user/manual-cv/screenshots/step-05.png",
+    "docs/manual-artifacts/en-US/user/manual-cv/screenshots/trouble-01-mobile.png",
+    "docs/manual-artifacts/en-US/user/manual-cv/screenshots/trouble-01.png",
+    "docs/manual-artifacts/en-US/user/manual-home/manual-steps.json",
+    "docs/manual-artifacts/en-US/user/manual-home/screenshots/step-01-mobile.png",
+    "docs/manual-artifacts/en-US/user/manual-home/screenshots/step-01.png",
+    "docs/manual-artifacts/en-US/user/manual-home/screenshots/step-02-mobile.png",
+    "docs/manual-artifacts/en-US/user/manual-home/screenshots/step-02.png",
+    "docs/manual-artifacts/en-US/user/manual-home/screenshots/step-03-mobile.png",
+    "docs/manual-artifacts/en-US/user/manual-home/screenshots/step-03.png",
+    "docs/manual-artifacts/en-US/user/manual-home/screenshots/step-04-mobile.png",
+    "docs/manual-artifacts/en-US/user/manual-home/screenshots/step-04.png",
+    "docs/manual-artifacts/en-US/user/manual-home/screenshots/step-05-mobile.png",
+    "docs/manual-artifacts/en-US/user/manual-home/screenshots/step-05.png",
+    "docs/manual-artifacts/en-US/user/manual-home/screenshots/step-06-mobile.png",
+    "docs/manual-artifacts/en-US/user/manual-home/screenshots/step-06.png",
+    "docs/manual-artifacts/en-US/user/manual-home/screenshots/step-07-mobile.png",
+    "docs/manual-artifacts/en-US/user/manual-home/screenshots/step-07.png",
+    "docs/manual-artifacts/en-US/user/manual-home/screenshots/step-08-mobile.png",
+    "docs/manual-artifacts/en-US/user/manual-home/screenshots/step-08.png",
+    "docs/manual-artifacts/en-US/user/manual-home/screenshots/trouble-01-mobile.png",
+    "docs/manual-artifacts/en-US/user/manual-home/screenshots/trouble-01.png",
+    "docs/manuals/USER_MANUAL.en-US.html",
+    "docs/manuals/USER_MANUAL.en-US.md",
+    "docs/manuals/en-US/user/USER_MANUAL.html",
+    "docs/manuals/en-US/user/USER_MANUAL.md",
+    "docs/manuals/index.html",
+    "docs/prerendered-routes.json",
+    "e2e/journeys/cv.e2e.spec.ts",
+    "e2e/journeys/home.e2e.spec.ts",
+    "package-lock.json",
+    "package.json",
+    "playwright.config.ts",
+    "public/i18n/en.json",
+    "public/i18n/ms.json",
+    "public/i18n/zh.json",
+    "qa-system/qa-manifest.json",
+    "qa-system/reports/coverage-audit.md",
+    "qa-system/reports/impact-plan.json",
+    "qa-system/reports/impact-plan.md",
+    "qa-system/reports/playwright-results.json",
+    "qa-system/reports/unit-results.xml",
+    "qa-system/schemas/qa-manifest.schema.json",
+    "src/app/app.component.spec.ts",
+    "src/app/app.spec.ts",
+    "src/app/contact/contact.component.html",
+    "src/app/contact/contact.component.spec.ts",
+    "src/app/cv/cv.component.html",
+    "src/app/cv/cv.component.scss",
+    "src/app/cv/cv.component.spec.ts",
+    "src/app/cv/cv.component.ts",
+    "src/app/experience/experience.component.html",
+    "src/app/experience/experience.component.spec.ts",
+    "src/app/expertise/expertise.component.html",
+    "src/app/expertise/expertise.component.scss",
+    "src/app/expertise/expertise.component.spec.ts",
+    "src/app/header/header.component.html",
+    "src/app/header/header.component.scss",
+    "src/app/header/header.component.spec.ts",
+    "src/app/hero/hero.component.scss",
+    "src/app/hero/hero.component.spec.ts",
+    "src/app/hero/hero.component.ts",
+    "src/app/portfolio/portfolio.component.spec.ts",
+    "src/app/publications/publications.component.html",
+    "src/app/publications/publications.component.spec.ts",
+    "src/app/publications/publications.component.ts",
+    "src/app/services/translation.service.spec.ts",
+    "src/app/services/translation.service.ts",
+    "src/app/skills/skills.component.spec.ts",
+    "src/app/testing/i18n-fixtures.ts",
+    "src/styles.scss",
+    "veriscribe.config.ts"
+  ],
+  "openApiChanged": false,
+  "i18nChanged": true,
+  "impactedServices": [
+    {
+      "key": "translation",
+      "filePath": "src/app/services/translation.service.ts",
+      "specPath": "src/app/services/translation.service.spec.ts",
+      "className": "TranslationService",
+      "specStatus": "TRIAGED",
+      "specMetrics": {
+        "tests": 14,
+        "meaningfulAssertions": 40,
+        "trivialAssertions": 0,
+        "scaffoldMarker": false
+      },
+      "httpEndpoints": [
+        {
+          "openApiOperationId": "UNMAPPED",
+          "contractVerified": true,
+          "method": "GET",
+          "urlPattern": "`i18n/${lang}.json`"
+        }
+      ],
+      "dependents": [
+        "src/app/contact/contact.component.ts",
+        "src/app/cv/cv.component.ts",
+        "src/app/experience/experience.component.ts",
+        "src/app/expertise/expertise.component.ts",
+        "src/app/header/header.component.ts",
+        "src/app/hero/hero.component.ts",
+        "src/app/publications/publications.component.ts",
+        "src/app/skills/skills.component.ts"
+      ],
+      "ambiguitiesOrSuspectedBugs": [
+        {
+          "id": "VS-B3-translation",
+          "description": "FIXED 2026-10-24: setLanguage() set currentLang and persisted the choice before the dictionary loaded, so a failed download showed \"中文\" over English content and remembered zh. Now commits only on success. Covered by translation.service.spec + home E2E \"[Degraded]\" test.",
+          "resolution": "CONFIRMED_BUG"
+        },
+        {
+          "id": "VS-FALLBACK-translation",
+          "description": "FIXED 2026-10-24: enFallback had drifted from en.json (hero.subtitle, experience.list[0].tech missing LangChain). Synced; the spec now asserts the fallback deep-equals en.json.",
+          "resolution": "CONFIRMED_BUG"
+        }
+      ],
+      "lastContentHash": "96ec217031ea"
+    }
+  ],
+  "impactedComponents": [
+    {
+      "key": "app",
+      "filePath": "src/app/app.component.ts",
+      "templatePath": "src/app/app.component.html",
+      "specPath": "src/app/app.component.spec.ts",
+      "selector": "app-root",
+      "className": "AppComponent",
+      "importedTypes": [
+        "RouterOutlet"
+      ],
+      "isStandalone": true,
+      "isInlineTemplate": false,
+      "specStatus": "VERIFIED",
+      "specMetrics": {
+        "tests": 4,
+        "meaningfulAssertions": 6,
+        "trivialAssertions": 0,
+        "scaffoldMarker": false
+      },
+      "detectedFeatures": {
+        "inputs": [],
+        "outputs": [],
+        "models": [],
+        "templateBranches": 0,
+        "interactiveEvents": [],
+        "reactiveForms": [],
+        "i18nKeys": [],
+        "rbacDirectives": [],
+        "rxJsSubscriptions": 0
+      },
+      "dimensionsVerified": {
+        "functionalAndEdgeCases": true,
+        "errorAndDegradedStates": true,
+        "rbac": true,
+        "a11y": true,
+        "i18n": true,
+        "memoryLeakUnsubscribe": true
+      },
+      "ambiguitiesOrSuspectedBugs": [],
+      "lastContentHash": "724f276690cc"
+    },
+    {
+      "key": "contact",
+      "filePath": "src/app/contact/contact.component.ts",
+      "templatePath": "src/app/contact/contact.component.html",
+      "specPath": "src/app/contact/contact.component.spec.ts",
+      "selector": "app-contact",
+      "className": "ContactComponent",
+      "importedTypes": [],
+      "isStandalone": true,
+      "isInlineTemplate": false,
+      "specStatus": "TRIAGED",
+      "specMetrics": {
+        "tests": 6,
+        "meaningfulAssertions": 13,
+        "trivialAssertions": 0,
+        "scaffoldMarker": false
+      },
+      "detectedFeatures": {
+        "inputs": [],
+        "outputs": [],
+        "models": [],
+        "templateBranches": 0,
+        "interactiveEvents": [],
+        "reactiveForms": [],
+        "i18nKeys": [],
+        "rbacDirectives": [],
+        "rxJsSubscriptions": 0
+      },
+      "dimensionsVerified": {
+        "functionalAndEdgeCases": true,
+        "errorAndDegradedStates": true,
+        "rbac": true,
+        "a11y": true,
+        "i18n": true,
+        "memoryLeakUnsubscribe": true
+      },
+      "ambiguitiesOrSuspectedBugs": [
+        {
+          "id": "VS-B1-contact",
+          "description": "FIXED 2026-10-24: reference job titles and university were hard-coded Chinese/English strings, so the Malay locale showed Chinese text. Now contact.refSeniorEngineer/refProfessor/refUtar in all 3 dictionaries. Covered by contact.component.spec + home E2E \"[ms]\" test.",
+          "resolution": "CONFIRMED_BUG"
+        }
+      ],
+      "lastContentHash": "5754bc7ef521"
+    },
+    {
+      "key": "cv",
+      "filePath": "src/app/cv/cv.component.ts",
+      "templatePath": "src/app/cv/cv.component.html",
+      "specPath": "src/app/cv/cv.component.spec.ts",
+      "selector": "app-cv",
+      "className": "CvComponent",
+      "importedTypes": [],
+      "isStandalone": true,
+      "isInlineTemplate": false,
+      "specStatus": "TRIAGED",
+      "specMetrics": {
+        "tests": 18,
+        "meaningfulAssertions": 65,
+        "trivialAssertions": 0,
+        "scaffoldMarker": false
+      },
+      "detectedFeatures": {
+        "inputs": [],
+        "outputs": [],
+        "models": [],
+        "templateBranches": 13,
+        "interactiveEvents": [
+          "click"
+        ],
+        "reactiveForms": [],
+        "i18nKeys": [],
+        "rbacDirectives": [],
+        "rxJsSubscriptions": 1
+      },
+      "dimensionsVerified": {
+        "functionalAndEdgeCases": true,
+        "errorAndDegradedStates": true,
+        "rbac": true,
+        "a11y": true,
+        "i18n": true,
+        "memoryLeakUnsubscribe": true
+      },
+      "ambiguitiesOrSuspectedBugs": [
+        {
+          "id": "VS-B2-cv",
+          "description": "FIXED 2026-10-24: in the zoneless app, isGenerating was a plain field, so the Download PDF button stayed \"Generating PDF...\" and disabled after the download. Now a signal reset in try/finally (also on failure). Covered by cv.component.spec + CV E2E step 5.",
+          "resolution": "CONFIRMED_BUG"
+        },
+        {
+          "id": "VS-B4-cv",
+          "description": "FIXED 2026-10-24: the header link opens /cv?lang=<current> but CvComponent ignored ?lang=, so the CV used the remembered language instead. Now applies supported values from queryParamMap (takeUntilDestroyed). Covered by cv.component.spec + CV E2E deep-link tests.",
+          "resolution": "CONFIRMED_BUG"
+        },
+        {
+          "id": "VS-NG0956-cv",
+          "description": "FIXED 2026-10-24: bullet lists tracked by their translated text, so every language switch rebuilt all <li> nodes (NG0956 in dev). Now track $index.",
+          "resolution": "CONFIRMED_BUG"
+        }
+      ],
+      "lastContentHash": "4cda3d82bc18"
+    },
+    {
+      "key": "experience",
+      "filePath": "src/app/experience/experience.component.ts",
+      "templatePath": "src/app/experience/experience.component.html",
+      "specPath": "src/app/experience/experience.component.spec.ts",
+      "selector": "app-experience",
+      "className": "ExperienceComponent",
+      "importedTypes": [],
+      "isStandalone": true,
+      "isInlineTemplate": false,
+      "specStatus": "TRIAGED",
+      "specMetrics": {
+        "tests": 13,
+        "meaningfulAssertions": 29,
+        "trivialAssertions": 0,
+        "scaffoldMarker": false
+      },
+      "detectedFeatures": {
+        "inputs": [],
+        "outputs": [],
+        "models": [],
+        "templateBranches": 4,
+        "interactiveEvents": [
+          "click",
+          "keydown.enter",
+          "keydown.space"
+        ],
+        "reactiveForms": [],
+        "i18nKeys": [],
+        "rbacDirectives": [],
+        "rxJsSubscriptions": 0
+      },
+      "dimensionsVerified": {
+        "functionalAndEdgeCases": true,
+        "errorAndDegradedStates": true,
+        "rbac": true,
+        "a11y": true,
+        "i18n": true,
+        "memoryLeakUnsubscribe": true
+      },
+      "ambiguitiesOrSuspectedBugs": [
+        {
+          "id": "VS-B5-experience",
+          "description": "FIXED 2026-10-24: role=\"button\" card headers had no aria-expanded and ignored the Space key. Added [attr.aria-expanded] and (keydown.space). Covered by experience.component.spec + home E2E step 5.",
+          "resolution": "CONFIRMED_BUG"
+        }
+      ],
+      "lastContentHash": "61269df7804c"
+    },
+    {
+      "key": "expertise",
+      "filePath": "src/app/expertise/expertise.component.ts",
+      "templatePath": "src/app/expertise/expertise.component.html",
+      "specPath": "src/app/expertise/expertise.component.spec.ts",
+      "selector": "app-expertise",
+      "className": "ExpertiseComponent",
+      "importedTypes": [],
+      "isStandalone": true,
+      "isInlineTemplate": false,
+      "specStatus": "TRIAGED",
+      "specMetrics": {
+        "tests": 10,
+        "meaningfulAssertions": 34,
+        "trivialAssertions": 0,
+        "scaffoldMarker": false
+      },
+      "detectedFeatures": {
+        "inputs": [],
+        "outputs": [],
+        "models": [],
+        "templateBranches": 5,
+        "interactiveEvents": [
+          "click"
+        ],
+        "reactiveForms": [],
+        "i18nKeys": [],
+        "rbacDirectives": [],
+        "rxJsSubscriptions": 0
+      },
+      "dimensionsVerified": {
+        "functionalAndEdgeCases": true,
+        "errorAndDegradedStates": true,
+        "rbac": true,
+        "a11y": true,
+        "i18n": true,
+        "memoryLeakUnsubscribe": true
+      },
+      "ambiguitiesOrSuspectedBugs": [
+        {
+          "id": "VS-B1-expertise",
+          "description": "FIXED 2026-10-24: \"Key Accomplishments\"/\"Technology Stack\" pane titles used a zh-or-English ternary, so Malay showed Chinese. Now expertise.accomplishmentsTitle/techStackTitle. Covered by expertise.component.spec + home E2E \"[ms]\" test.",
+          "resolution": "CONFIRMED_BUG"
+        },
+        {
+          "id": "VS-B5-expertise",
+          "description": "FIXED 2026-10-24: mobile carousel indicator dots were clickable <span>s (not focusable, no name). Now <button type=\"button\"> with aria-label and aria-pressed. Covered by expertise.component.spec + home E2E \"[Mobile]\" test.",
+          "resolution": "CONFIRMED_BUG"
+        }
+      ],
+      "lastContentHash": "b245f3753a4e"
+    },
+    {
+      "key": "header",
+      "filePath": "src/app/header/header.component.ts",
+      "templatePath": "src/app/header/header.component.html",
+      "specPath": "src/app/header/header.component.spec.ts",
+      "selector": "app-header",
+      "className": "HeaderComponent",
+      "importedTypes": [
+        "RouterLink"
+      ],
+      "isStandalone": true,
+      "isInlineTemplate": false,
+      "specStatus": "TRIAGED",
+      "specMetrics": {
+        "tests": 11,
+        "meaningfulAssertions": 39,
+        "trivialAssertions": 0,
+        "scaffoldMarker": false
+      },
+      "detectedFeatures": {
+        "inputs": [
+          "activeSection"
+        ],
+        "outputs": [],
+        "models": [],
+        "templateBranches": 4,
+        "interactiveEvents": [
+          "click"
+        ],
+        "reactiveForms": [],
+        "i18nKeys": [],
+        "rbacDirectives": [],
+        "rxJsSubscriptions": 0
+      },
+      "dimensionsVerified": {
+        "functionalAndEdgeCases": true,
+        "errorAndDegradedStates": true,
+        "rbac": true,
+        "a11y": true,
+        "i18n": true,
+        "memoryLeakUnsubscribe": true
+      },
+      "ambiguitiesOrSuspectedBugs": [],
+      "lastContentHash": "40d5f20e3a76"
+    },
+    {
+      "key": "hero",
+      "filePath": "src/app/hero/hero.component.ts",
+      "templatePath": "src/app/hero/hero.component.html",
+      "specPath": "src/app/hero/hero.component.spec.ts",
+      "selector": "app-hero",
+      "className": "HeroComponent",
+      "importedTypes": [],
+      "isStandalone": true,
+      "isInlineTemplate": false,
+      "specStatus": "TRIAGED",
+      "specMetrics": {
+        "tests": 11,
+        "meaningfulAssertions": 36,
+        "trivialAssertions": 0,
+        "scaffoldMarker": false
+      },
+      "detectedFeatures": {
+        "inputs": [],
+        "outputs": [],
+        "models": [],
+        "templateBranches": 0,
+        "interactiveEvents": [],
+        "reactiveForms": [],
+        "i18nKeys": [],
+        "rbacDirectives": [],
+        "rxJsSubscriptions": 0
+      },
+      "dimensionsVerified": {
+        "functionalAndEdgeCases": false,
+        "errorAndDegradedStates": false,
+        "rbac": true,
+        "a11y": false,
+        "i18n": true,
+        "memoryLeakUnsubscribe": true
+      },
+      "ambiguitiesOrSuspectedBugs": [],
+      "lastContentHash": "842af3e14190"
+    },
+    {
+      "key": "portfolio",
+      "filePath": "src/app/portfolio/portfolio.component.ts",
+      "templatePath": "src/app/portfolio/portfolio.component.html",
+      "specPath": "src/app/portfolio/portfolio.component.spec.ts",
+      "selector": "app-portfolio",
+      "className": "PortfolioComponent",
+      "importedTypes": [
+        "HeaderComponent",
+        "HeroComponent",
+        "ExperienceComponent",
+        "ExpertiseComponent",
+        "PublicationsComponent",
+        "SkillsComponent",
+        "ContactComponent"
+      ],
+      "isStandalone": true,
+      "isInlineTemplate": false,
+      "specStatus": "TRIAGED",
+      "specMetrics": {
+        "tests": 6,
+        "meaningfulAssertions": 9,
+        "trivialAssertions": 0,
+        "scaffoldMarker": false
+      },
+      "detectedFeatures": {
+        "inputs": [],
+        "outputs": [],
+        "models": [],
+        "templateBranches": 0,
+        "interactiveEvents": [],
+        "reactiveForms": [],
+        "i18nKeys": [],
+        "rbacDirectives": [],
+        "rxJsSubscriptions": 0
+      },
+      "dimensionsVerified": {
+        "functionalAndEdgeCases": true,
+        "errorAndDegradedStates": true,
+        "rbac": true,
+        "a11y": true,
+        "i18n": true,
+        "memoryLeakUnsubscribe": true
+      },
+      "ambiguitiesOrSuspectedBugs": [
+        {
+          "id": "VS-A11Y-contrast",
+          "description": "FIXED 2026-10-24: real axe (full-page preset) found 47 color-contrast failures from the palette (#80868b 3.6:1, #1a73e8 on tints 3.9-4.45:1, #34a853 2.8:1). The old E2E hid this by disabling the rule. Global tokens are now #5f6368/#1967d2/#188038 (AA); /cv keeps the original palette to match the ReportLab PDF.",
+          "resolution": "CONFIRMED_BUG"
+        }
+      ],
+      "lastContentHash": "c53006c478cc"
+    },
+    {
+      "key": "publications",
+      "filePath": "src/app/publications/publications.component.ts",
+      "templatePath": "src/app/publications/publications.component.html",
+      "specPath": "src/app/publications/publications.component.spec.ts",
+      "selector": "app-publications",
+      "className": "PublicationsComponent",
+      "importedTypes": [],
+      "isStandalone": true,
+      "isInlineTemplate": false,
+      "specStatus": "TRIAGED",
+      "specMetrics": {
+        "tests": 5,
+        "meaningfulAssertions": 13,
+        "trivialAssertions": 0,
+        "scaffoldMarker": false
+      },
+      "detectedFeatures": {
+        "inputs": [],
+        "outputs": [],
+        "models": [],
+        "templateBranches": 5,
+        "interactiveEvents": [],
+        "reactiveForms": [],
+        "i18nKeys": [],
+        "rbacDirectives": [],
+        "rxJsSubscriptions": 0
+      },
+      "dimensionsVerified": {
+        "functionalAndEdgeCases": true,
+        "errorAndDegradedStates": true,
+        "rbac": true,
+        "a11y": true,
+        "i18n": true,
+        "memoryLeakUnsubscribe": true
+      },
+      "ambiguitiesOrSuspectedBugs": [
+        {
+          "id": "VS-AUTHOR-publications",
+          "description": "FIXED 2026-10-24: self-author highlight only matched \"Chia, M.Y.\", so a citation written \"Chia, M. Y.\" was not bolded (the CV handled both). Now SELF_AUTHOR_NAMES covers both. Covered by publications.component.spec + home E2E step 6.",
+          "resolution": "CONFIRMED_BUG"
+        }
+      ],
+      "lastContentHash": "3859c712f6c9"
+    },
+    {
+      "key": "skills",
+      "filePath": "src/app/skills/skills.component.ts",
+      "templatePath": "src/app/skills/skills.component.html",
+      "specPath": "src/app/skills/skills.component.spec.ts",
+      "selector": "app-skills",
+      "className": "SkillsComponent",
+      "importedTypes": [],
+      "isStandalone": true,
+      "isInlineTemplate": false,
+      "specStatus": "VERIFIED",
+      "specMetrics": {
+        "tests": 4,
+        "meaningfulAssertions": 14,
+        "trivialAssertions": 0,
+        "scaffoldMarker": false
+      },
+      "detectedFeatures": {
+        "inputs": [],
+        "outputs": [],
+        "models": [],
+        "templateBranches": 3,
+        "interactiveEvents": [],
+        "reactiveForms": [],
+        "i18nKeys": [],
+        "rbacDirectives": [],
+        "rxJsSubscriptions": 0
+      },
+      "dimensionsVerified": {
+        "functionalAndEdgeCases": true,
+        "errorAndDegradedStates": true,
+        "rbac": true,
+        "a11y": true,
+        "i18n": true,
+        "memoryLeakUnsubscribe": true
+      },
+      "ambiguitiesOrSuspectedBugs": [],
+      "lastContentHash": "78ded590c59b"
+    }
+  ],
+  "impactedFeatureSlices": [
+    {
+      "key": "cv",
+      "routePath": "/cv",
+      "allowedRoles": [
+        "user"
+      ],
+      "components": [
+        "cv"
+      ],
+      "services": [
+        "translation"
+      ],
+      "mockFixtures": [
+        "public/i18n/en.json",
+        "public/i18n/zh.json",
+        "public/i18n/ms.json"
+      ],
+      "params": [],
+      "paramOverrides": {},
+      "e2eSpecPath": "e2e/journeys/cv.e2e.spec.ts",
+      "manualChapterId": "manual-cv",
+      "manualOutputPaths": [
+        "docs/manuals/en-US/user/USER_MANUAL.md",
+        "docs/manuals/en-US/user/USER_MANUAL.html"
+      ],
+      "status": "DOCUMENTED",
+      "dimensionsVerified": {
+        "happyPathJourney": true,
+        "errorResilience4xx5xx": true,
+        "rbacAccessMatrix": true,
+        "responsiveViewports": true,
+        "openApiContractSync": false,
+        "axeAccessibility": true,
+        "i18nLocales": true,
+        "performanceWebVitals": false
+      }
+    },
+    {
+      "key": "home",
+      "routePath": "/",
+      "allowedRoles": [
+        "user"
+      ],
+      "components": [
+        "portfolio",
+        "header",
+        "hero",
+        "experience",
+        "expertise",
+        "publications",
+        "skills",
+        "contact"
+      ],
+      "services": [
+        "translation"
+      ],
+      "mockFixtures": [
+        "public/i18n/en.json",
+        "public/i18n/zh.json",
+        "public/i18n/ms.json"
+      ],
+      "params": [],
+      "paramOverrides": {},
+      "e2eSpecPath": "e2e/journeys/home.e2e.spec.ts",
+      "manualChapterId": "manual-home",
+      "manualOutputPaths": [
+        "docs/manuals/en-US/user/USER_MANUAL.md",
+        "docs/manuals/en-US/user/USER_MANUAL.html"
+      ],
+      "status": "DOCUMENTED",
+      "dimensionsVerified": {
+        "happyPathJourney": true,
+        "errorResilience4xx5xx": true,
+        "rbacAccessMatrix": true,
+        "responsiveViewports": true,
+        "openApiContractSync": false,
+        "axeAccessibility": true,
+        "i18nLocales": true,
+        "performanceWebVitals": false
+      }
+    }
+  ],
+  "impactedManualChapters": [
+    "manual-cv",
+    "manual-home"
+  ],
+  "evidence": [
+    {
+      "slice": "home",
+      "route": "/",
+      "manual": "fresh",
+      "playwright": "passed"
+    },
+    {
+      "slice": "cv",
+      "route": "/cv",
+      "manual": "fresh",
+      "playwright": "passed"
+    }
+  ],
+  "ciGateViolations": [],
+  "waived": []
+}

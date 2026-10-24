@@ -9,6 +9,8 @@ interface PublicationData {
   tier: string;
 }
 
+const SELF_AUTHOR_NAMES = new Set(['Chia, M.Y.', 'Chia, M. Y.']);
+
 // Selected research publications list component declared as standalone.
 @Component({
   selector: 'app-publications',
@@ -19,6 +21,12 @@ interface PublicationData {
 })
 export class PublicationsComponent {
   protected readonly ts = inject(TranslationService);
+
+  /** Both initial spellings appear in the source citations; highlight either one. */
+  protected isSelf(author: string): boolean {
+    return SELF_AUTHOR_NAMES.has(author.trim());
+  }
+
   protected readonly publications: PublicationData[] = [
     {
       title:

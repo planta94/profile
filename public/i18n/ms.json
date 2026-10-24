@@ -83,6 +83,8 @@
     "tag": "Kepakaran",
     "title": "Bidang Fokus Utama",
     "desc": "Papan pemuka interaktif yang memamerkan hasil kerja industri secara langsung dan pencapaian penyelidikan.",
+    "accomplishmentsTitle": "Pencapaian Utama",
+    "techStackTitle": "Teknologi Utama",
     "tabs": [
       {
         "title": "AI Agen & LLM",
@@ -163,6 +165,9 @@
     "phoneLabel": "Telefon",
     "locationLabel": "Lokasi",
     "locationValue": "Selangor, Malaysia",
-    "referencesTitle": "Rujukan Profesional"
+    "referencesTitle": "Rujukan Profesional",
+    "refSeniorEngineer": "Jurutera Perisian Kanan",
+    "refProfessor": "Profesor",
+    "refUtar": "Universiti Tunku Abdul Rahman, Malaysia"
   }
 }

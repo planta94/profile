@@ -14,7 +14,7 @@
       <h3 class="pub-title">{{ pub.title }}</h3>
       <p class="pub-authors">
         @for (author of pub.authors; track author; let last = $last) {
-          @if (author === 'Chia, M.Y.') {
+          @if (isSelf(author)) {
             <strong>{{ author }}</strong>
           } @else {
             <span>{{ author }}</span>

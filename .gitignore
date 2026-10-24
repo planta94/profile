@@ -56,3 +56,8 @@ env/
 # CV Font assets (auto-downloaded by generator)
 cv-generator/inter-v20-latin-*
 cv-generator/inter.zip
+
+# Playwright Test Artifacts
+test-results/
+playwright-report/
+

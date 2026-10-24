@@ -7,18 +7,26 @@
   min-height: 100vh;
   min-height: 100dvh;
   padding: 40px 0;
+  overflow-x: hidden;
   font-family:
     'Plus Jakarta Sans',
     -apple-system,
     BlinkMacSystemFont,
     sans-serif;
   color: var(--text-primary);
-}
 
+  /* The CV mirrors the ReportLab PDF (cv-generator/generate_cv.py), so it keeps the original
+     palette. The website itself uses the darker, WCAG AA tokens defined in styles.scss. */
+  --text-tertiary: #80868b;
+  --google-blue: #1a73e8;
+  --google-green: #34a853;
+  --accent-primary: #1a73e8;
+}
 
 /* Top Action Bar */
 .action-bar {
   width: 595pt;
+  max-width: calc(100vw - 32px);
   background: #ffffff;
   padding: 14px 28px;
   margin: 0 auto 24px;
@@ -30,7 +38,7 @@
   box-sizing: border-box;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   .action-bar {
     width: 833pt;
   }
@@ -99,7 +107,7 @@
   margin: 0 auto 24px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   .cv-page {
     transform: scale(1.4);
     transform-origin: top center;

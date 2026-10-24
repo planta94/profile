@@ -1,12 +1,7 @@
 <header class="floating-header">
   <div class="nav-container">
     <a href="#" class="logo">
-      <img
-        src="profile.jpg"
-        alt="Chia Min Yan"
-        class="logo-avatar"
-        onerror="this.src = 'favicon.png'"
-      />
+      <img src="profile.jpg" alt="" class="logo-avatar" onerror="this.src = 'favicon.png'" />
       <span class="logo-text">CHIA MIN YAN</span>
     </a>
     <nav class="nav-links">
@@ -40,7 +35,7 @@
           class="lang-dropdown-trigger"
           (click)="toggleDropdown()"
           [class.active]="isDropdownOpen()"
-          aria-label="Select Language"
+          title="Select Language"
         >
           <span class="material-symbols-outlined lang-icon">translate</span>
           <span class="active-lang-text desktop-only">{{ getLangLabel(ts.currentLang()) }}</span>

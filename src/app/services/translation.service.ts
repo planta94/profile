@@ -47,6 +47,8 @@ export interface TranslationDictionary {
     tag: string;
     title: string;
     desc: string;
+    accomplishmentsTitle: string;
+    techStackTitle: string;
     tabs: TabData[];
   };
   publications: {
@@ -71,6 +73,9 @@ export interface TranslationDictionary {
     locationLabel: string;
     locationValue: string;
     referencesTitle: string;
+    refSeniorEngineer: string;
+    refProfessor: string;
+    refUtar: string;
   };
 }
 
@@ -88,7 +93,7 @@ const enFallback: TranslationDictionary = {
   hero: {
     title: 'Bridging Engineering, Data Science, and Agentic AI',
     subtitle:
-      'Dr. Chia Min Yan is a PhD Engineer and Data Scientist specializing in machine learning, agentic LLM solutions, full-stack microservices, and environmental process modelling.',
+      'Chia Min Yan specializes in machine learning systems, agentic LLM solutions, full-stack microservices, and environmental process modelling. Combining scientific research with software engineering, he develops production-grade frontend and backend applications. His experience spans the end-to-end design and deployment of predictive models in fintech and EV charging networks, alongside Q1-published academic research in data fusion, deep learning, and chemical process optimization.',
     ctaContact: 'Get in Touch',
     ctaResearch: 'Selected Research',
   },
@@ -106,7 +111,16 @@ const enFallback: TranslationDictionary = {
           'Spearhead the technical design of scalable backend microservices, rewards database structures, and RESTful APIs, while directing frontend development of responsive EV fleet management portals and interactive customer dashboards.',
           'Initiate and champion generative AI strategies, orchestrating LLM integrations and advanced agentic frameworks to automate complex reasoning and EV customer support workflows.',
         ],
-        tech: ['Node.js', 'TypeScript', 'PostgreSQL', 'Angular', 'Python', 'Docker', 'Git'],
+        tech: [
+          'Node.js',
+          'TypeScript',
+          'PostgreSQL',
+          'Angular',
+          'Python',
+          'Docker',
+          'Git',
+          'LangChain',
+        ],
       },
       {
         role: 'Data Scientist',
@@ -152,6 +166,8 @@ const enFallback: TranslationDictionary = {
     tag: 'Capabilities',
     title: 'Core Focus Areas',
     desc: 'Interactive dashboard showcasing direct industrial work and research achievements.',
+    accomplishmentsTitle: 'Key Accomplishments',
+    techStackTitle: 'Technology Stack',
     tabs: [
       {
         title: 'Agentic AI & LLMs',
@@ -237,6 +253,9 @@ const enFallback: TranslationDictionary = {
     locationLabel: 'Location',
     locationValue: 'Selangor, Malaysia',
     referencesTitle: 'Professional References',
+    refSeniorEngineer: 'Senior Software Engineer',
+    refProfessor: 'Professor',
+    refUtar: 'Universiti Tunku Abdul Rahman, Malaysia',
   },
 };
 
@@ -265,20 +284,24 @@ export class TranslationService {
   }
 
   setLanguage(lang: 'en' | 'zh' | 'ms'): Promise<void> {
-    if (isPlatformBrowser(this.platformId)) {
-      localStorage.setItem('preferredLang', lang);
-    }
-    return this.loadLanguageTranslations(lang);
+    return this.loadLanguageTranslations(lang, true);
   }
 
-  private async loadLanguageTranslations(lang: 'en' | 'zh' | 'ms'): Promise<void> {
+  private async loadLanguageTranslations(
+    lang: 'en' | 'zh' | 'ms',
+    persistPreference = false,
+  ): Promise<void> {
     try {
       const res = await firstValueFrom(this.http.get<TranslationDictionary>(`i18n/${lang}.json`));
       this.t.set(res);
       this.currentLang.set(lang);
+      if (persistPreference && isPlatformBrowser(this.platformId)) {
+        localStorage.setItem('preferredLang', lang);
+      }
     } catch (err) {
+      // Keep the previously loaded language + dictionary so the selector label never
+      // claims a language whose strings are not actually on screen.
       console.error(`Failed to load translation JSON: ${lang}`, err);
-      this.currentLang.set(lang);
     }
   }
 }

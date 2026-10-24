@@ -83,6 +83,8 @@
     "tag": "Capabilities",
     "title": "Core Focus Areas",
     "desc": "Interactive dashboard showcasing direct industrial work and research achievements.",
+    "accomplishmentsTitle": "Key Accomplishments",
+    "techStackTitle": "Technology Stack",
     "tabs": [
       {
         "title": "Agentic AI & LLMs",
@@ -163,6 +165,9 @@
     "phoneLabel": "Phone",
     "locationLabel": "Location",
     "locationValue": "Selangor, Malaysia",
-    "referencesTitle": "Professional References"
+    "referencesTitle": "Professional References",
+    "refSeniorEngineer": "Senior Software Engineer",
+    "refProfessor": "Professor",
+    "refUtar": "Universiti Tunku Abdul Rahman, Malaysia"
   }
 }

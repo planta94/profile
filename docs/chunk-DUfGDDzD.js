@@ -1,0 +1,1 @@
+import{n as MQ}from"./main-OPU5SY3Z.js";var chunk_5UQBD3CO_default=MQ();export{chunk_5UQBD3CO_default as default};

@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 2,
+  "veriscribeVersion": "1.5.0",
+  "chapterId": "manual-home",
+  "sliceKey": "home",
+  "sourceFingerprint": "sha256:cae6bff9c5a4ce1498f006e514be78cb1bc9aaf1527bba4c162571dee9426c74",
+  "featureTitle": "Exploring the Portfolio",
+  "summary": "Find your way around Dr. Chia Min Yan's portfolio: switch the interface language, jump between sections, browse expertise and career history, and open the printable CV.",
+  "role": "user",
+  "locale": "en-US",
+  "routePath": "/",
+  "generatedAt": "2026-10-24T13:43:32.768Z",
+  "preconditions": [
+    "You are using an up-to-date browser (Chrome, Edge, Firefox or Safari).",
+    "You are online, so the page can load its language files."
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Read the profile introduction",
+      "userInstruction": "Start at the top of the page. The introduction summarises the profile and has two shortcut buttons: **Contact** and **Publications**.",
+      "expectedOutcome": "The name, a short bio and the two shortcut buttons are visible.",
+      "screenshotRelativePath": "./screenshots/step-01.png",
+      "responsiveScreenshots": [
+        {
+          "viewportName": "Mobile",
+          "width": 390,
+          "height": 844,
+          "screenshotRelativePath": "./screenshots/step-01-mobile.png"
+        }
+      ]
+    },
+    {
+      "stepNumber": 2,
+      "title": "Change the display language",
+      "userInstruction": "Click the **language** button (the translate icon) in the header, then pick **English**, **中文** or **Melayu**.",
+      "expectedOutcome": "The page is translated straight away, with no reload, and the header shows the language you picked. Your choice is remembered for your next visit.",
+      "screenshotRelativePath": "./screenshots/step-02.png",
+      "responsiveScreenshots": [
+        {
+          "viewportName": "Mobile",
+          "width": 390,
+          "height": 844,
+          "screenshotRelativePath": "./screenshots/step-02-mobile.png"
+        }
+      ],
+      "notes": "The printable CV opens in whichever language is active when you open it."
+    },
+    {
+      "stepNumber": 3,
+      "title": "Jump to a section",
+      "userInstruction": "Use the links in the header (**Profile**, **Expertise**, **Experience**, **Publications**, **Skills**, **Contact**) to scroll to that part of the page.",
+      "expectedOutcome": "The page scrolls to the section you clicked.",
+      "screenshotRelativePath": "./screenshots/step-03.png",
+      "responsiveScreenshots": [
+        {
+          "viewportName": "Mobile",
+          "width": 390,
+          "height": 844,
+          "screenshotRelativePath": "./screenshots/step-03-mobile.png"
+        }
+      ]
+    },
+    {
+      "stepNumber": 4,
+      "title": "Browse areas of expertise",
+      "userInstruction": "In **Expertise**, click a topic on the left (for example **Academic Research**) to see its accomplishments and tech stack.",
+      "expectedOutcome": "The topic you clicked is highlighted, and the panel on the right shows its **Key Accomplishments** and **Technology Stack**.",
+      "screenshotRelativePath": "./screenshots/step-04.png",
+      "responsiveScreenshots": [
+        {
+          "viewportName": "Mobile",
+          "width": 390,
+          "height": 844,
+          "screenshotRelativePath": "./screenshots/step-04-mobile.png"
+        }
+      ]
+    },
+    {
+      "stepNumber": 5,
+      "title": "Expand a role in the career timeline",
+      "userInstruction": "In **Experience**, click a role (or select it with **Tab** and press **Enter** or **Space**) to show its achievements and technologies.",
+      "expectedOutcome": "The card opens to show the achievements and technology tags. Click it again to close it. The most recent role is open by default.",
+      "screenshotRelativePath": "./screenshots/step-05.png",
+      "responsiveScreenshots": [
+        {
+          "viewportName": "Mobile",
+          "width": 390,
+          "height": 844,
+          "screenshotRelativePath": "./screenshots/step-05-mobile.png"
+        }
+      ]
+    },
+    {
+      "stepNumber": 6,
+      "title": "Browse peer-reviewed publications",
+      "userInstruction": "Scroll to **Publications** to see the selected journal papers, with their tier, year, authors and journal.",
+      "expectedOutcome": "Each card lists the full author list, with Dr. Chia's name in **bold**.",
+      "screenshotRelativePath": "./screenshots/step-06.png",
+      "responsiveScreenshots": [
+        {
+          "viewportName": "Mobile",
+          "width": 390,
+          "height": 844,
+          "screenshotRelativePath": "./screenshots/step-06-mobile.png"
+        }
+      ]
+    },
+    {
+      "stepNumber": 7,
+      "title": "Get in touch",
+      "userInstruction": "In **Contact**, click the email address or phone number to open your mail or phone app. Professional references are listed alongside.",
+      "expectedOutcome": "Your email app (or dialler) opens with the address already filled in.",
+      "screenshotRelativePath": "./screenshots/step-07.png",
+      "responsiveScreenshots": [
+        {
+          "viewportName": "Mobile",
+          "width": 390,
+          "height": 844,
+          "screenshotRelativePath": "./screenshots/step-07-mobile.png"
+        }
+      ]
+    },
+    {
+      "stepNumber": 8,
+      "title": "Open the printable CV",
+      "userInstruction": "Click **Download CV** in the header.",
+      "expectedOutcome": "The two-page A4 CV opens in a new tab, in the language you are currently using, ready to download as a PDF.",
+      "screenshotRelativePath": "./screenshots/step-08.png",
+      "responsiveScreenshots": [
+        {
+          "viewportName": "Mobile",
+          "width": 390,
+          "height": 844,
+          "screenshotRelativePath": "./screenshots/step-08-mobile.png"
+        }
+      ]
+    }
+  ],
+  "faqAndTroubleshooting": [
+    {
+      "scenario": "The language does not change when I pick 中文 or Melayu",
+      "userMessage": "The page stays in the current language and the header label does not change.",
+      "resolution": "The language file could not be downloaded (for example, you went offline). The page keeps working in the current language. Check your connection, reload the page and pick the language again."
+    },
+    {
+      "scenario": "I cannot see the topic list in Expertise on my phone",
+      "userMessage": "On narrow screens the left-hand topic list is replaced by a carousel.",
+      "resolution": "Use the **‹ / ›** arrows or tap one of the dots under the topic name to move between topics.",
+      "screenshotRelativePath": "./screenshots/trouble-01.png"
+    }
+  ],
+  "checksApplied": {
+    "visualLayout": {
+      "ignoreSelectors": [
+        "#particleCanvas"
+      ],
+      "rules": {
+        "horizontalOverflow": true,
+        "brokenImages": true,
+        "stretchedImages": true,
+        "zeroSizeSvg": true,
+        "occlusion": true
+      }
+    },
+    "i18nKeys": {
+      "keySources": [
+        "public/i18n"
+      ]
+    },
+    "consoleErrors": {
+      "allow": [
+        "/favicon\\.ico/i"
+      ]
+    }
+  },
+  "a11yEngine": "axe"
+}

@@ -1,7 +1,16 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ActivatedRoute } from '@angular/router';
 import { TranslationService } from '../services/translation.service';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
+
+const SUPPORTED_LANGS = ['en', 'zh', 'ms'] as const;
+type CvLang = (typeof SUPPORTED_LANGS)[number];
+
+function isCvLang(value: string | null): value is CvLang {
+  return value !== null && (SUPPORTED_LANGS as readonly string[]).includes(value);
+}
 
 @Component({
   selector: 'app-cv',
@@ -12,7 +21,20 @@ import { jsPDF } from 'jspdf';
 })
 export class CvComponent {
   protected readonly ts = inject(TranslationService);
-  protected isGenerating = false;
+  // Signal (not a plain field): the app is zoneless, so only signal writes re-render after awaits.
+  protected readonly isGenerating = signal(false);
+
+  constructor() {
+    // Honour shareable links such as /#/cv?lang=zh (the header's Download CV link sets ?lang=).
+    inject(ActivatedRoute)
+      .queryParamMap.pipe(takeUntilDestroyed())
+      .subscribe((params) => {
+        const lang = params.get('lang');
+        if (isCvLang(lang) && lang !== this.ts.currentLang()) {
+          void this.ts.setLanguage(lang);
+        }
+      });
+  }
 
   // Core skills listed in CV sidebar
   protected readonly coreSkills = [
@@ -159,48 +181,52 @@ export class CvComponent {
   /** Render each .cv-page as a high-res canvas image, package into a jsPDF and trigger download.
    *  This bypasses Chrome's Skia PDF text renderer which causes thick/doubled glyph artifacts. */
   async printPage() {
-    this.isGenerating = true;
+    this.isGenerating.set(true);
     try {
-      const pages = document.querySelectorAll('.cv-page');
-      // A4 dimensions in points (1pt = 1/72 inch)
-      const pdfWidth = 595.28;
-      const pdfHeight = 841.89;
-      const pdf = new jsPDF({ orientation: 'portrait', unit: 'pt', format: 'a4', compress: true });
-
-      for (let i = 0; i < pages.length; i++) {
-        const pageEl = pages[i] as HTMLElement;
-
-        // Temporarily remove desktop scaling transform for accurate capture
-        const origTransform = pageEl.style.transform;
-        const origTransformOrigin = pageEl.style.transformOrigin;
-        pageEl.style.transform = 'none';
-        pageEl.style.transformOrigin = 'top left';
-
-        // Wait for browser reflow so html2canvas captures at true size
-        await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
-
-        const canvas = await html2canvas(pageEl, {
-          scale: 4,
-          useCORS: true,
-          logging: false,
-          backgroundColor: '#ffffff',
-          windowWidth: pageEl.scrollWidth,
-          windowHeight: pageEl.scrollHeight,
-        });
-
-        // Restore original transform
-        pageEl.style.transform = origTransform;
-        pageEl.style.transformOrigin = origTransformOrigin;
-
-        const imgData = canvas.toDataURL('image/png');
-        if (i > 0) pdf.addPage();
-        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      }
-
-      pdf.save('CV_Chia_Min_Yan.pdf');
+      await this.renderPdf();
     } finally {
-      this.isGenerating = false;
+      this.isGenerating.set(false);
     }
+  }
+
+  protected async renderPdf(): Promise<void> {
+    const pages = document.querySelectorAll('.cv-page');
+    // A4 dimensions in points (1pt = 1/72 inch)
+    const pdfWidth = 595.28;
+    const pdfHeight = 841.89;
+    const pdf = new jsPDF({ orientation: 'portrait', unit: 'pt', format: 'a4', compress: true });
+
+    for (let i = 0; i < pages.length; i++) {
+      const pageEl = pages.item(i) as HTMLElement;
+
+      // Temporarily remove desktop scaling transform for accurate capture
+      const origTransform = pageEl.style.transform;
+      const origTransformOrigin = pageEl.style.transformOrigin;
+      pageEl.style.transform = 'none';
+      pageEl.style.transformOrigin = 'top left';
+
+      // Wait for browser reflow so html2canvas captures at true size
+      await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+
+      const canvas = await html2canvas(pageEl, {
+        scale: 4,
+        useCORS: true,
+        logging: false,
+        backgroundColor: '#ffffff',
+        windowWidth: pageEl.scrollWidth,
+        windowHeight: pageEl.scrollHeight,
+      });
+
+      // Restore original transform
+      pageEl.style.transform = origTransform;
+      pageEl.style.transformOrigin = origTransformOrigin;
+
+      const imgData = canvas.toDataURL('image/png');
+      if (i > 0) pdf.addPage();
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+    }
+
+    pdf.save('CV_Chia_Min_Yan.pdf');
   }
 
   formatAuthors(authors: string[]): string {

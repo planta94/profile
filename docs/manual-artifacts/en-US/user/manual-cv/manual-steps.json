@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 2,
+  "veriscribeVersion": "1.5.0",
+  "chapterId": "manual-cv",
+  "sliceKey": "cv",
+  "sourceFingerprint": "sha256:b27c9e9faf592412e3da0b15c7b05b56f1a3c29435bffb84fdea1328f834d743",
+  "featureTitle": "Viewing and Downloading the CV",
+  "summary": "Read the two-page A4 curriculum vitae, switch its language, and download it as a PDF.",
+  "role": "user",
+  "locale": "en-US",
+  "routePath": "/cv",
+  "generatedAt": "2026-10-24T13:43:17.182Z",
+  "preconditions": [
+    "You opened the CV from **Download CV** on the portfolio, or went straight to `/#/cv`.",
+    "Your browser allows downloads from this site."
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Find the CV controls",
+      "userInstruction": "Use the bar at the top of the page to choose a language (**English**, **中文**, **Melayu**) or click **Download PDF**.",
+      "expectedOutcome": "The current language is highlighted. The bar is only on screen: it does not appear in the printout or the PDF.",
+      "screenshotRelativePath": "./screenshots/step-01.png",
+      "responsiveScreenshots": [
+        {
+          "viewportName": "Mobile",
+          "width": 390,
+          "height": 844,
+          "screenshotRelativePath": "./screenshots/step-01-mobile.png"
+        }
+      ]
+    },
+    {
+      "stepNumber": 2,
+      "title": "Read page 1: profile, education, skills and career",
+      "userInstruction": "The left column of page 1 has contact details, degrees and core skills. The right column lists professional experience, newest first.",
+      "expectedOutcome": "Page 1 shows the CV photo, 3 degrees, 12 core skills and every role, each with its dates.",
+      "screenshotRelativePath": "./screenshots/step-02.png",
+      "responsiveScreenshots": [
+        {
+          "viewportName": "Mobile",
+          "width": 390,
+          "height": 844,
+          "screenshotRelativePath": "./screenshots/step-02-mobile.png"
+        }
+      ]
+    },
+    {
+      "stepNumber": 3,
+      "title": "Read page 2: research, publications and references",
+      "userInstruction": "Scroll down to page 2 for research experience, selected publications, extracurricular activities, affiliations and references.",
+      "expectedOutcome": "Page 2 lists 5 publications with Dr. Chia's name in bold, plus 2 references.",
+      "screenshotRelativePath": "./screenshots/step-03.png",
+      "responsiveScreenshots": [
+        {
+          "viewportName": "Mobile",
+          "width": 390,
+          "height": 844,
+          "screenshotRelativePath": "./screenshots/step-03-mobile.png"
+        }
+      ]
+    },
+    {
+      "stepNumber": 4,
+      "title": "Change the CV language",
+      "userInstruction": "Click **中文** or **Melayu** in the top bar.",
+      "expectedOutcome": "The whole CV is translated without reloading the page, and it still fits on exactly two A4 pages.",
+      "screenshotRelativePath": "./screenshots/step-04.png",
+      "responsiveScreenshots": [
+        {
+          "viewportName": "Mobile",
+          "width": 390,
+          "height": 844,
+          "screenshotRelativePath": "./screenshots/step-04-mobile.png"
+        }
+      ]
+    },
+    {
+      "stepNumber": 5,
+      "title": "Download the CV as a PDF",
+      "userInstruction": "Click **Download PDF** and keep the tab open until the file has downloaded.",
+      "expectedOutcome": "The button changes to **Generating PDF...** for a few seconds, `CV_Chia_Min_Yan.pdf` is downloaded, and the button goes back to **Download PDF** so you can download again.",
+      "screenshotRelativePath": "./screenshots/step-05.png",
+      "responsiveScreenshots": [
+        {
+          "viewportName": "Mobile",
+          "width": 390,
+          "height": 844,
+          "screenshotRelativePath": "./screenshots/step-05-mobile.png"
+        }
+      ],
+      "notes": "The PDF is generated in your browser at high resolution, so it can take a few seconds on slower devices."
+    }
+  ],
+  "faqAndTroubleshooting": [
+    {
+      "scenario": "The Download PDF button says \"Generating PDF...\"",
+      "userMessage": "Generating PDF...",
+      "resolution": "The PDF is being built in your browser. This usually takes 2–3 seconds. Stay on the tab; the button comes back once the download starts.",
+      "screenshotRelativePath": "./screenshots/trouble-01.png"
+    },
+    {
+      "scenario": "Printing with Ctrl/Cmd + P adds headers or a third page",
+      "userMessage": "The print preview shows browser headers or spills onto a 3rd page.",
+      "resolution": "Use **Download PDF** instead: it always gives a clean two-page A4 PDF. If you do print, turn off \"Headers and footers\" and set the margins to \"Default\"."
+    },
+    {
+      "scenario": "The CV opened in a different language from the portfolio",
+      "userMessage": "The language in the CV does not match the portfolio.",
+      "resolution": "Open the CV with **Download CV** on the portfolio: the link carries your current language (`?lang=`). You can also pick a language in the CV's top bar."
+    }
+  ],
+  "checksApplied": {
+    "visualLayout": {
+      "ignoreSelectors": [
+        "#particleCanvas"
+      ],
+      "rules": {
+        "horizontalOverflow": true,
+        "brokenImages": true,
+        "stretchedImages": true,
+        "zeroSizeSvg": true,
+        "occlusion": true
+      }
+    },
+    "i18nKeys": {
+      "keySources": [
+        "public/i18n"
+      ]
+    },
+    "consoleErrors": {
+      "allow": [
+        "/favicon\\.ico/i"
+      ]
+    }
+  },
+  "a11yEngine": "axe"
+}

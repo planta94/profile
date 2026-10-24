@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="135" failures="0" errors="0" time="11.8431489">
+    <testsuite name="src/app/app.component.spec.ts" timestamp="2026-10-24T13:42:35.015Z" hostname="planta" tests="4" failures="0" errors="0" skipped="0" time="0.6852901">
+        <testcase classname="src/app/app.component.spec.ts" name="AppComponent (shell + route table) &gt; renders only a router outlet as the application shell" time="0.0808334">
+        </testcase>
+        <testcase classname="src/app/app.component.spec.ts" name="AppComponent (shell + route table) &gt; routes &quot;/&quot; to the portfolio page" time="0.3718938">
+        </testcase>
+        <testcase classname="src/app/app.component.spec.ts" name="AppComponent (shell + route table) &gt; routes &quot;/cv&quot; to the printable CV page" time="0.1314734">
+        </testcase>
+        <testcase classname="src/app/app.component.spec.ts" name="AppComponent (shell + route table) &gt; redirects unknown URLs back to the portfolio" time="0.0968472">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/contact/contact.component.spec.ts" timestamp="2026-10-24T13:42:35.017Z" hostname="planta" tests="10" failures="0" errors="0" skipped="0" time="0.6640084">
+        <testcase classname="src/app/contact/contact.component.spec.ts" name="ContactComponent &gt; exposes actionable email and phone links" time="0.2542712">
+        </testcase>
+        <testcase classname="src/app/contact/contact.component.spec.ts" name="ContactComponent &gt; lists two professional references with mailto links" time="0.0499291">
+        </testcase>
+        <testcase classname="src/app/contact/contact.component.spec.ts" name="ContactComponent &gt; renders the footer copyright" time="0.0390943">
+        </testcase>
+        <testcase classname="src/app/contact/contact.component.spec.ts" name="ContactComponent &gt; in en &gt; localizes headings, labels and location" time="0.0593465">
+        </testcase>
+        <testcase classname="src/app/contact/contact.component.spec.ts" name="ContactComponent &gt; in en &gt; localizes reference titles and affiliation from the dictionary" time="0.0462106">
+        </testcase>
+        <testcase classname="src/app/contact/contact.component.spec.ts" name="ContactComponent &gt; in zh &gt; localizes headings, labels and location" time="0.052938">
+        </testcase>
+        <testcase classname="src/app/contact/contact.component.spec.ts" name="ContactComponent &gt; in zh &gt; localizes reference titles and affiliation from the dictionary" time="0.0506161">
+        </testcase>
+        <testcase classname="src/app/contact/contact.component.spec.ts" name="ContactComponent &gt; in ms &gt; localizes headings, labels and location" time="0.0394436">
+        </testcase>
+        <testcase classname="src/app/contact/contact.component.spec.ts" name="ContactComponent &gt; in ms &gt; localizes reference titles and affiliation from the dictionary" time="0.03901">
+        </testcase>
+        <testcase classname="src/app/contact/contact.component.spec.ts" name="ContactComponent &gt; never shows Chinese reference titles in Malay (regression)" time="0.0292853">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/cv/cv.component.spec.ts" timestamp="2026-10-24T13:42:35.020Z" hostname="planta" tests="28" failures="0" errors="0" skipped="0" time="2.3863785">
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; lays the CV out as exactly two A4 pages with page numbers" time="0.6219912">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; uses the dedicated CV photo, not the website photo" time="0.1899116">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; page 1: name, contact links, 3 degrees, 12 core skills and every job from the dictionary" time="0.1540585">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; page 1: renders tech badges only for jobs that declare a tech list" time="0.1290893">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; page 2: research roles, 5 publications, 4 affiliations, 5 activities, 2 references" time="0.1188838">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; bolds the author in every citation, for both initial spellings" time="0.0824094">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; action bar &gt; offers 3 languages with the current one active, and an enabled Download PDF button" time="0.0795481">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; action bar &gt; button 1 switches the whole CV to zh" time="0.0998551">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; action bar &gt; button 2 switches the whole CV to ms" time="0.0476269">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; action bar &gt; shows a busy, disabled button while the PDF renders and resets it afterwards" time="0.0691437">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; action bar &gt; resets the button even when PDF rendering fails" time="0.0512192">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; action bar &gt; renders both CV pages at 4x scale into an A4 PDF and restores their transforms" time="0.151772">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; localized content (en) &gt; translates sidebar headings, page-2 heading and reference titles" time="0.0483566">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; localized content (en) &gt; translates the dictionary-driven sections" time="0.0326028">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; localized content (en) &gt; keeps the same document structure in every language" time="0.0320249">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; localized content (zh) &gt; translates sidebar headings, page-2 heading and reference titles" time="0.0396985">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; localized content (zh) &gt; translates the dictionary-driven sections" time="0.0308852">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; localized content (zh) &gt; keeps the same document structure in every language" time="0.0417485">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; localized content (ms) &gt; translates sidebar headings, page-2 heading and reference titles" time="0.0317841">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; localized content (ms) &gt; translates the dictionary-driven sections" time="0.0428287">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; rendered document &gt; localized content (ms) &gt; keeps the same document structure in every language" time="0.0323337">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; ?lang= deep links &gt; /cv?lang=zh loads and renders that language" time="0.0703221">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; ?lang= deep links &gt; /cv?lang=ms loads and renders that language" time="0.0420059">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; ?lang= deep links &gt; reacts when only the query param changes on the same page" time="0.0346557">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; ?lang= deep links &gt; ignores unsupported value &quot;fr&quot;" time="0.0223761">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; ?lang= deep links &gt; ignores unsupported value &quot;&quot;" time="0.0240959">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; ?lang= deep links &gt; ignores unsupported value &quot;ZH&quot;" time="0.0242344">
+        </testcase>
+        <testcase classname="src/app/cv/cv.component.spec.ts" name="CvComponent &gt; ?lang= deep links &gt; does not refetch when ?lang= matches the current language" time="0.0352616">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/experience/experience.component.spec.ts" timestamp="2026-10-24T13:42:35.024Z" hostname="planta" tests="14" failures="0" errors="0" skipped="0" time="1.1978492">
+        <testcase classname="src/app/experience/experience.component.spec.ts" name="ExperienceComponent &gt; renders the section header from the dictionary" time="0.3503316">
+        </testcase>
+        <testcase classname="src/app/experience/experience.component.spec.ts" name="ExperienceComponent &gt; renders one timeline card per role with role, company and period" time="0.0868313">
+        </testcase>
+        <testcase classname="src/app/experience/experience.component.spec.ts" name="ExperienceComponent &gt; marks only the latest role as current" time="0.0683445">
+        </testcase>
+        <testcase classname="src/app/experience/experience.component.spec.ts" name="ExperienceComponent &gt; renders every bullet of every role" time="0.0646411">
+        </testcase>
+        <testcase classname="src/app/experience/experience.component.spec.ts" name="ExperienceComponent &gt; renders a tech-stack row only for roles that declare a tech list" time="0.0896588">
+        </testcase>
+        <testcase classname="src/app/experience/experience.component.spec.ts" name="ExperienceComponent &gt; expand / collapse &gt; expands only the latest role by default and exposes aria-expanded" time="0.0824976">
+        </testcase>
+        <testcase classname="src/app/experience/experience.component.spec.ts" name="ExperienceComponent &gt; expand / collapse &gt; headers are keyboard-focusable buttons" time="0.0639351">
+        </testcase>
+        <testcase classname="src/app/experience/experience.component.spec.ts" name="ExperienceComponent &gt; expand / collapse &gt; toggles a card on click and rotates its icon" time="0.0740094">
+        </testcase>
+        <testcase classname="src/app/experience/experience.component.spec.ts" name="ExperienceComponent &gt; expand / collapse &gt; collapses the default-expanded card when clicked" time="0.055138">
+        </testcase>
+        <testcase classname="src/app/experience/experience.component.spec.ts" name="ExperienceComponent &gt; expand / collapse &gt; toggles with the Enter key" time="0.047484">
+        </testcase>
+        <testcase classname="src/app/experience/experience.component.spec.ts" name="ExperienceComponent &gt; expand / collapse &gt; toggles with the Space key without scrolling the page" time="0.0530272">
+        </testcase>
+        <testcase classname="src/app/experience/experience.component.spec.ts" name="ExperienceComponent &gt; expand / collapse &gt; keeps the timeline dot of the latest role highlighted and lights expanded ones" time="0.0390945">
+        </testcase>
+        <testcase classname="src/app/experience/experience.component.spec.ts" name="ExperienceComponent &gt; re-renders roles in zh" time="0.08236">
+        </testcase>
+        <testcase classname="src/app/experience/experience.component.spec.ts" name="ExperienceComponent &gt; re-renders roles in ms" time="0.0364001">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/expertise/expertise.component.spec.ts" timestamp="2026-10-24T13:42:35.027Z" hostname="planta" tests="12" failures="0" errors="0" skipped="0" time="1.3016782">
+        <testcase classname="src/app/expertise/expertise.component.spec.ts" name="ExpertiseComponent &gt; renders a desktop tab, a content pane and a carousel dot per focus area" time="0.3828517">
+        </testcase>
+        <testcase classname="src/app/expertise/expertise.component.spec.ts" name="ExpertiseComponent &gt; renders each pane with badge, description, accomplishments and tech tags" time="0.0960361">
+        </testcase>
+        <testcase classname="src/app/expertise/expertise.component.spec.ts" name="ExpertiseComponent &gt; shows the first focus area by default" time="0.0894855">
+        </testcase>
+        <testcase classname="src/app/expertise/expertise.component.spec.ts" name="ExpertiseComponent &gt; switches pane when a desktop tab is clicked" time="0.0972553">
+        </testcase>
+        <testcase classname="src/app/expertise/expertise.component.spec.ts" name="ExpertiseComponent &gt; mobile carousel &gt; disables &quot;previous&quot; on the first item and advances with &quot;next&quot;" time="0.1176898">
+        </testcase>
+        <testcase classname="src/app/expertise/expertise.component.spec.ts" name="ExpertiseComponent &gt; mobile carousel &gt; disables &quot;next&quot; on the last item and never overflows past it" time="0.100471">
+        </testcase>
+        <testcase classname="src/app/expertise/expertise.component.spec.ts" name="ExpertiseComponent &gt; mobile carousel &gt; steps back with &quot;previous&quot; and never goes below the first item" time="0.0890569">
+        </testcase>
+        <testcase classname="src/app/expertise/expertise.component.spec.ts" name="ExpertiseComponent &gt; mobile carousel &gt; indicator dots are labelled buttons that jump to their focus area" time="0.0592454">
+        </testcase>
+        <testcase classname="src/app/expertise/expertise.component.spec.ts" name="ExpertiseComponent &gt; localized pane headings &gt; uses the en dictionary headings" time="0.0537887">
+        </testcase>
+        <testcase classname="src/app/expertise/expertise.component.spec.ts" name="ExpertiseComponent &gt; localized pane headings &gt; uses the zh dictionary headings" time="0.0912132">
+        </testcase>
+        <testcase classname="src/app/expertise/expertise.component.spec.ts" name="ExpertiseComponent &gt; localized pane headings &gt; uses the ms dictionary headings" time="0.0499195">
+        </testcase>
+        <testcase classname="src/app/expertise/expertise.component.spec.ts" name="ExpertiseComponent &gt; localized pane headings &gt; never shows Chinese headings in Malay (regression)" time="0.0684882">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/header/header.component.spec.ts" timestamp="2026-10-24T13:42:35.029Z" hostname="planta" tests="16" failures="0" errors="0" skipped="0" time="1.0800947">
+        <testcase classname="src/app/header/header.component.spec.ts" name="HeaderComponent &gt; branding &gt; renders the monogram and a decorative (alt=&quot;&quot;) avatar to avoid redundant announcements" time="0.3485515">
+        </testcase>
+        <testcase classname="src/app/header/header.component.spec.ts" name="HeaderComponent &gt; section navigation &gt; renders one anchor per page section with localized labels" time="0.0773192">
+        </testcase>
+        <testcase classname="src/app/header/header.component.spec.ts" name="HeaderComponent &gt; section navigation &gt; highlights &quot;about&quot; by default" time="0.0482782">
+        </testcase>
+        <testcase classname="src/app/header/header.component.spec.ts" name="HeaderComponent &gt; section navigation &gt; highlights only the &quot;expertise&quot; link when activeSection input changes" time="0.0725687">
+        </testcase>
+        <testcase classname="src/app/header/header.component.spec.ts" name="HeaderComponent &gt; section navigation &gt; highlights only the &quot;experience&quot; link when activeSection input changes" time="0.0522754">
+        </testcase>
+        <testcase classname="src/app/header/header.component.spec.ts" name="HeaderComponent &gt; section navigation &gt; highlights only the &quot;publications&quot; link when activeSection input changes" time="0.0444006">
+        </testcase>
+        <testcase classname="src/app/header/header.component.spec.ts" name="HeaderComponent &gt; section navigation &gt; highlights only the &quot;skills&quot; link when activeSection input changes" time="0.0464732">
+        </testcase>
+        <testcase classname="src/app/header/header.component.spec.ts" name="HeaderComponent &gt; section navigation &gt; highlights only the &quot;contact&quot; link when activeSection input changes" time="0.0430494">
+        </testcase>
+        <testcase classname="src/app/header/header.component.spec.ts" name="HeaderComponent &gt; language dropdown &gt; is closed initially and toggles open/closed from the trigger" time="0.0566276">
+        </testcase>
+        <testcase classname="src/app/header/header.component.spec.ts" name="HeaderComponent &gt; language dropdown &gt; lists the 3 supported languages and marks only the current one" time="0.0405196">
+        </testcase>
+        <testcase classname="src/app/header/header.component.spec.ts" name="HeaderComponent &gt; language dropdown &gt; selecting zh closes the menu, re-renders the header and marks 1 when reopened" time="0.0667672">
+        </testcase>
+        <testcase classname="src/app/header/header.component.spec.ts" name="HeaderComponent &gt; language dropdown &gt; selecting ms closes the menu, re-renders the header and marks 2 when reopened" time="0.0570666">
+        </testcase>
+        <testcase classname="src/app/header/header.component.spec.ts" name="HeaderComponent &gt; language dropdown &gt; closes when the user clicks anywhere outside the header" time="0.0279384">
+        </testcase>
+        <testcase classname="src/app/header/header.component.spec.ts" name="HeaderComponent &gt; language dropdown &gt; stays open when the click lands inside the header" time="0.0385991">
+        </testcase>
+        <testcase classname="src/app/header/header.component.spec.ts" name="HeaderComponent &gt; language dropdown &gt; keeps the trigger accessible name aligned with its visible text (WCAG 2.5.3)" time="0.030429">
+        </testcase>
+        <testcase classname="src/app/header/header.component.spec.ts" name="HeaderComponent &gt; Download CV link &gt; opens the CV route in a new tab carrying the current language" time="0.025278">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/hero/hero.component.spec.ts" timestamp="2026-10-24T13:42:35.031Z" hostname="planta" tests="11" failures="0" errors="0" skipped="0" time="1.1426789">
+        <testcase classname="src/app/hero/hero.component.spec.ts" name="HeroComponent &gt; content &gt; renders subtitle and both calls to action from the dictionary" time="0.3637626">
+        </testcase>
+        <testcase classname="src/app/hero/hero.component.spec.ts" name="HeroComponent &gt; content &gt; renders the single page &lt;h1&gt; and a described profile photo" time="0.0511534">
+        </testcase>
+        <testcase classname="src/app/hero/hero.component.spec.ts" name="HeroComponent &gt; content &gt; animates the title word-by-word and then lifts it off" time="0.2378377">
+        </testcase>
+        <testcase classname="src/app/hero/hero.component.spec.ts" name="HeroComponent &gt; content &gt; re-runs the animation per character when switching to Chinese" time="0.2036097">
+        </testcase>
+        <testcase classname="src/app/hero/hero.component.spec.ts" name="HeroComponent &gt; particle canvas lifecycle &gt; sizes the canvas to its container and renders a frame" time="0.0476342">
+        </testcase>
+        <testcase classname="src/app/hero/hero.component.spec.ts" name="HeroComponent &gt; particle canvas lifecycle &gt; tracks pointer and touch movement, parts nearby dashes and idles on leave" time="0.0568176">
+        </testcase>
+        <testcase classname="src/app/hero/hero.component.spec.ts" name="HeroComponent &gt; particle canvas lifecycle &gt; emits a radial velocity pulse on pointerdown inside the canvas and ignores clicks outside" time="0.0406462">
+        </testcase>
+        <testcase classname="src/app/hero/hero.component.spec.ts" name="HeroComponent &gt; particle canvas lifecycle &gt; pauses the render loop when scrolled out of view and resumes when visible again" time="0.0536806">
+        </testcase>
+        <testcase classname="src/app/hero/hero.component.spec.ts" name="HeroComponent &gt; particle canvas lifecycle &gt; registers passive window listeners for interaction" time="0.0277058">
+        </testcase>
+        <testcase classname="src/app/hero/hero.component.spec.ts" name="HeroComponent &gt; particle canvas lifecycle &gt; cancels the pending animation frame and removes every listener on destroy" time="0.0351625">
+        </testcase>
+        <testcase classname="src/app/hero/hero.component.spec.ts" name="HeroComponent &gt; particle canvas lifecycle &gt; stops scheduling frames after destroy" time="0.0206312">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/portfolio/portfolio.component.spec.ts" timestamp="2026-10-24T13:42:35.034Z" hostname="planta" tests="8" failures="0" errors="0" skipped="0" time="1.8537191">
+        <testcase classname="src/app/portfolio/portfolio.component.spec.ts" name="PortfolioComponent &gt; composes the header and every section, in navigation order, inside &lt;main&gt;" time="0.8562763">
+        </testcase>
+        <testcase classname="src/app/portfolio/portfolio.component.spec.ts" name="PortfolioComponent &gt; every header anchor points at a section that exists on the page" time="0.2529655">
+        </testcase>
+        <testcase classname="src/app/portfolio/portfolio.component.spec.ts" name="PortfolioComponent &gt; highlights &quot;about&quot; on first render" time="0.1483072">
+        </testcase>
+        <testcase classname="src/app/portfolio/portfolio.component.spec.ts" name="PortfolioComponent &gt; highlights &quot;expertise&quot; when it crosses the trigger line while scrolling" time="0.1312754">
+        </testcase>
+        <testcase classname="src/app/portfolio/portfolio.component.spec.ts" name="PortfolioComponent &gt; highlights &quot;publications&quot; when it crosses the trigger line while scrolling" time="0.0899795">
+        </testcase>
+        <testcase classname="src/app/portfolio/portfolio.component.spec.ts" name="PortfolioComponent &gt; highlights &quot;contact&quot; when it crosses the trigger line while scrolling" time="0.1361532">
+        </testcase>
+        <testcase classname="src/app/portfolio/portfolio.component.spec.ts" name="PortfolioComponent &gt; falls back to &quot;about&quot; when no section crosses the trigger line" time="0.0855558">
+        </testcase>
+        <testcase classname="src/app/portfolio/portfolio.component.spec.ts" name="PortfolioComponent &gt; removes the exact scroll listener it registered on destroy" time="0.1497875">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/publications/publications.component.spec.ts" timestamp="2026-10-24T13:42:35.036Z" hostname="planta" tests="7" failures="0" errors="0" skipped="0" time="0.6874417">
+        <testcase classname="src/app/publications/publications.component.spec.ts" name="PublicationsComponent &gt; renders the five selected Q1 publications newest-first" time="0.2937044">
+        </testcase>
+        <testcase classname="src/app/publications/publications.component.spec.ts" name="PublicationsComponent &gt; labels every card with its journal tier and applies the Q1 style" time="0.05977">
+        </testcase>
+        <testcase classname="src/app/publications/publications.component.spec.ts" name="PublicationsComponent &gt; highlights the author exactly once per paper, for both initial spellings" time="0.0892616">
+        </testcase>
+        <testcase classname="src/app/publications/publications.component.spec.ts" name="PublicationsComponent &gt; separates authors with commas and no trailing comma" time="0.0758392">
+        </testcase>
+        <testcase classname="src/app/publications/publications.component.spec.ts" name="PublicationsComponent &gt; renders the en section header" time="0.0556473">
+        </testcase>
+        <testcase classname="src/app/publications/publications.component.spec.ts" name="PublicationsComponent &gt; renders the zh section header" time="0.0643314">
+        </testcase>
+        <testcase classname="src/app/publications/publications.component.spec.ts" name="PublicationsComponent &gt; renders the ms section header" time="0.0453491">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/services/translation.service.spec.ts" timestamp="2026-10-24T13:42:35.038Z" hostname="planta" tests="17" failures="0" errors="0" skipped="0" time="0.1681697">
+        <testcase classname="src/app/services/translation.service.spec.ts" name="TranslationService &gt; initial state &gt; starts in English with the in-memory fallback dictionary (no request yet)" time="0.0454612">
+        </testcase>
+        <testcase classname="src/app/services/translation.service.spec.ts" name="TranslationService &gt; initial state &gt; in-memory fallback is identical to public/i18n/en.json (no content drift)" time="0.0123153">
+        </testcase>
+        <testcase classname="src/app/services/translation.service.spec.ts" name="TranslationService &gt; initialize() &gt; GETs i18n/en.json when no preference is stored" time="0.0089777">
+        </testcase>
+        <testcase classname="src/app/services/translation.service.spec.ts" name="TranslationService &gt; initialize() &gt; restores the stored preference" time="0.0064969">
+        </testcase>
+        <testcase classname="src/app/services/translation.service.spec.ts" name="TranslationService &gt; initialize() &gt; ignores an unsupported stored value and falls back to English" time="0.0051217">
+        </testcase>
+        <testcase classname="src/app/services/translation.service.spec.ts" name="TranslationService &gt; initialize() &gt; resolves without any HTTP request during SSR / prerendering" time="0.00772">
+        </testcase>
+        <testcase classname="src/app/services/translation.service.spec.ts" name="TranslationService &gt; setLanguage() &gt; loads the dictionary, updates both signals and persists the preference" time="0.0064484">
+        </testcase>
+        <testcase classname="src/app/services/translation.service.spec.ts" name="TranslationService &gt; setLanguage() &gt; does not persist the preference before the dictionary has loaded" time="0.0056669">
+        </testcase>
+        <testcase classname="src/app/services/translation.service.spec.ts" name="TranslationService &gt; setLanguage() &gt; does not touch localStorage on the server platform" time="0.0089305">
+        </testcase>
+        <testcase classname="src/app/services/translation.service.spec.ts" name="TranslationService &gt; degraded state: dictionary request fails &gt; HTTP 500 keeps the previous language label + strings and logs the failure" time="0.0131671">
+        </testcase>
+        <testcase classname="src/app/services/translation.service.spec.ts" name="TranslationService &gt; degraded state: dictionary request fails &gt; HTTP 404 keeps the previous language label + strings and logs the failure" time="0.0132727">
+        </testcase>
+        <testcase classname="src/app/services/translation.service.spec.ts" name="TranslationService &gt; degraded state: dictionary request fails &gt; network error on first load leaves the app usable in English" time="0.0135964">
+        </testcase>
+        <testcase classname="src/app/services/translation.service.spec.ts" name="TranslationService &gt; contract: locale dictionaries stay in sync &gt; zh.json has exactly the keys of en.json" time="0.0063506">
+        </testcase>
+        <testcase classname="src/app/services/translation.service.spec.ts" name="TranslationService &gt; contract: locale dictionaries stay in sync &gt; ms.json has exactly the keys of en.json" time="0.007269">
+        </testcase>
+        <testcase classname="src/app/services/translation.service.spec.ts" name="TranslationService &gt; contract: locale dictionaries stay in sync &gt; zh.json has the same list lengths as en.json" time="0.0012772">
+        </testcase>
+        <testcase classname="src/app/services/translation.service.spec.ts" name="TranslationService &gt; contract: locale dictionaries stay in sync &gt; ms.json has the same list lengths as en.json" time="0.0012959">
+        </testcase>
+        <testcase classname="src/app/services/translation.service.spec.ts" name="TranslationService &gt; contract: locale dictionaries stay in sync &gt; no locale contains an empty string value" time="0.0006883">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/app/skills/skills.component.spec.ts" timestamp="2026-10-24T13:42:35.042Z" hostname="planta" tests="8" failures="0" errors="0" skipped="0" time="0.6758404">
+        <testcase classname="src/app/skills/skills.component.spec.ts" name="SkillsComponent &gt; renders the development skill bars with widths matching their percentage" time="0.3381267">
+        </testcase>
+        <testcase classname="src/app/skills/skills.component.spec.ts" name="SkillsComponent &gt; every percentage is within 0-100" time="0.057189">
+        </testcase>
+        <testcase classname="src/app/skills/skills.component.spec.ts" name="SkillsComponent &gt; localizes language names, proficiency labels and interests in en" time="0.0540224">
+        </testcase>
+        <testcase classname="src/app/skills/skills.component.spec.ts" name="SkillsComponent &gt; localizes language names, proficiency labels and interests in zh" time="0.0537522">
+        </testcase>
+        <testcase classname="src/app/skills/skills.component.spec.ts" name="SkillsComponent &gt; localizes language names, proficiency labels and interests in ms" time="0.0473365">
+        </testcase>
+        <testcase classname="src/app/skills/skills.component.spec.ts" name="SkillsComponent &gt; renders the en headings" time="0.0464053">
+        </testcase>
+        <testcase classname="src/app/skills/skills.component.spec.ts" name="SkillsComponent &gt; renders the zh headings" time="0.0391206">
+        </testcase>
+        <testcase classname="src/app/skills/skills.component.spec.ts" name="SkillsComponent &gt; renders the ms headings" time="0.0352237">
+        </testcase>
+    </testsuite>
+</testsuites>

@@ -1,16 +1,92 @@
-import {
-  Component,
-  NgZone,
-  inject,
-  OnInit,
-  AfterViewInit,
-  OnDestroy,
-  effect,
-  ElementRef,
-} from '@angular/core';
+import { Component, NgZone, inject, OnInit, AfterViewInit, OnDestroy, effect } from '@angular/core';
 import { TranslationService } from '../services/translation.service';
 
-// Interactive hero landing section with canvas particle ring backdrop and custom letter animations.
+/**
+ * A single capsule dash in the Antigravity-style field.
+ * Each particle owns a "home" slot on a ring that is centred on the (smoothed) cursor,
+ * and chases that slot with its own underdamped spring. Inner particles are stiff and
+ * catch up quickly; outer particles are soft and lag behind — this differential lag is
+ * what makes the whole ring warp, smear and wobble like a fluid when the cursor moves.
+ */
+interface FieldParticle {
+  band: number; // 0 = inner edge of the ring, 1 = outer edge
+  angle: number;
+  spin: number;
+  phase: number;
+  stiffness: number;
+  damping: number;
+  length: number;
+  thickness: number;
+  alpha: number;
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  // Confetti tumble state
+  restTilt: number; // resting angle offset from the radial direction
+  tilt: number;
+  tiltVel: number;
+  tumbleDir: number;
+  flip: number; // 3D flip phase → apparent length = |cos(flip)|
+  agitation: number; // smoothed 0..1 measure of how hard the piece is being thrown around
+}
+
+interface DustMote {
+  x: number;
+  y: number;
+  size: number;
+  alpha: number;
+  phase: number;
+  depth: number;
+}
+
+const TAU = Math.PI * 2;
+
+// Screen-angle colour wheel (degrees, r, g, b) in Google tones — 0° = right, 90° = down.
+const COLOR_STOPS: ReadonlyArray<readonly [number, number, number, number]> = [
+  [0, 142, 108, 242],
+  [55, 234, 67, 53],
+  [100, 249, 138, 29],
+  [140, 251, 188, 4],
+  [195, 236, 91, 122],
+  [250, 161, 66, 244],
+  [300, 66, 133, 244],
+  [360, 142, 108, 242],
+];
+
+function buildColorLut(): string[] {
+  const lut: string[] = [];
+  const lastStop = COLOR_STOPS[COLOR_STOPS.length - 1];
+  for (let deg = 0; deg < 360; deg++) {
+    let lower = COLOR_STOPS[0];
+    let upper = lastStop;
+    for (const stop of COLOR_STOPS) {
+      if (stop[0] <= deg) {
+        lower = stop;
+      } else {
+        upper = stop;
+        break;
+      }
+    }
+    const span = upper[0] - lower[0] || 1;
+    const t = (deg - lower[0]) / span;
+    const r = Math.round(lower[1] + (upper[1] - lower[1]) * t);
+    const g = Math.round(lower[2] + (upper[2] - lower[2]) * t);
+    const b = Math.round(lower[3] + (upper[3] - lower[3]) * t);
+    lut.push(`rgb(${r}, ${g}, ${b})`);
+  }
+  return lut;
+}
+
+function clamp(value: number, min: number, max: number): number {
+  return Math.min(max, Math.max(min, value));
+}
+
+function smoothstep(edge0: number, edge1: number, x: number): number {
+  const t = clamp((x - edge0) / (edge1 - edge0), 0, 1);
+  return t * t * (3 - 2 * t);
+}
+
 @Component({
   selector: 'app-hero',
   standalone: true,
@@ -20,39 +96,78 @@ import { TranslationService } from '../services/translation.service';
 })
 export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly ngZone = inject(NgZone);
-  private readonly elementRef = inject(ElementRef);
   protected readonly ts = inject(TranslationService);
 
-  private canvasElement?: HTMLCanvasElement;
+  private canvas?: HTMLCanvasElement;
+  private ctx?: CanvasRenderingContext2D;
   private animationFrameId?: number;
-  private resizeListener?: () => void;
-  // eslint-disable-next-line no-unused-vars
-  private mouseMoveListener?: (e: MouseEvent) => void;
-  // eslint-disable-next-line no-unused-vars
-  private touchMoveListener?: (e: TouchEvent) => void;
+  private visibilityObserver?: IntersectionObserver;
+  private isCanvasVisible = true;
+  private isLoopRunning = false;
+  private lastFrameTime = 0;
+  private time = 0;
+  private reducedMotion = false;
 
-  // Easing coordinates for cursor tracking
-  private targetX = 50;
-  private targetY = 50;
-  private smoothX = 50;
-  private smoothY = 50;
+  // Canvas geometry
+  private viewWidth = 0;
+  private viewHeight = 0;
+  private innerRadius = 60;
+  private outerRadius = 480;
 
-  // Animation values
-  private tick = 0;
-  private animationTime = 0;
+  // Field centre (eases toward the cursor, or idles around the avatar)
+  private restX = 0;
+  private restY = 0;
+  private centerX = 0;
+  private centerY = 0;
 
-  // Seed constants (calculated once at startup)
-  private M = 0;
-  private I = 0;
-  private S = 0;
-  private z = 0;
-  private xDirection = 0;
-  private P = 0;
-  private V = 0;
+  // Last known pointer position in viewport coordinates
+  private pointerClientX = 0;
+  private pointerClientY = 0;
+  private hasPointer = false;
+
+  private particles: FieldParticle[] = [];
+  private dust: DustMote[] = [];
+  private readonly colorLut = buildColorLut();
+
+  private readonly handleResize = (): void => {
+    this.resizeCanvas(false);
+  };
+
+  private readonly handlePointerMove = (e: PointerEvent): void => {
+    this.pointerClientX = e.clientX;
+    this.pointerClientY = e.clientY;
+    this.hasPointer = true;
+  };
+
+  private readonly handleTouchMove = (e: TouchEvent): void => {
+    const touch = e.touches.item(0);
+    if (touch) {
+      this.pointerClientX = touch.clientX;
+      this.pointerClientY = touch.clientY;
+      this.hasPointer = true;
+    }
+  };
+
+  private readonly handlePointerLeave = (): void => {
+    this.hasPointer = false;
+  };
+
+  private readonly handlePointerDown = (e: PointerEvent): void => {
+    this.emitPulse(e.clientX, e.clientY);
+  };
+
+  private readonly renderFrame = (now: number): void => {
+    if (!this.isCanvasVisible) {
+      this.isLoopRunning = false;
+      return;
+    }
+    this.step(now);
+    this.animationFrameId = requestAnimationFrame(this.renderFrame);
+  };
 
   constructor() {
     effect(() => {
-      // Re-trigger text animation whenever the language signal changes
+      // Re-trigger text liftoff animation on language switch
       this.ts.currentLang();
       setTimeout(() => {
         this.initHeroTextAnimation();
@@ -61,7 +176,7 @@ export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.initSeedConstants(280); // Using the same seed 280 from Bramus's config
+    // Initial setup
   }
 
   ngAfterViewInit() {
@@ -69,215 +184,350 @@ export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.resizeListener) {
-      window.removeEventListener('resize', this.resizeListener);
-    }
-    if (this.mouseMoveListener) {
-      window.removeEventListener('mousemove', this.mouseMoveListener);
-    }
-    if (this.touchMoveListener) {
-      window.removeEventListener('touchmove', this.touchMoveListener);
-    }
+    window.removeEventListener('resize', this.handleResize);
+    window.removeEventListener('pointermove', this.handlePointerMove);
+    window.removeEventListener('touchmove', this.handleTouchMove);
+    window.removeEventListener('touchend', this.handlePointerLeave);
+    window.removeEventListener('pointerdown', this.handlePointerDown);
+    document.documentElement.removeEventListener('pointerleave', this.handlePointerLeave);
+    this.visibilityObserver?.disconnect();
     if (this.animationFrameId) {
       cancelAnimationFrame(this.animationFrameId);
     }
-  }
-
-  // Seeded Random Generator (PRNG)
-  private seededRandom(seed: number): () => number {
-    let s = seed;
-    return () => {
-      s = (1831565813 + (s | 0)) | 0;
-      let a = Math.imul(s ^ (s >>> 15), 1 | s);
-      return (((a = (a + Math.imul(a ^ (a >>> 7), 61 | a)) ^ a) ^ (a >>> 14)) >>> 0) / 4294967296;
-    };
-  }
-
-  private hash(t: number): number {
-    const a = 43758.5453123 * Math.sin(t);
-    return a - Math.floor(a);
-  }
-
-  private initSeedConstants(seed: number) {
-    const random = this.seededRandom(seed);
-    const randomInt = (min: number, max: number) => Math.floor(random() * (max - min + 1)) + min;
-    const randomFloat = (min: number, max: number) => min + random() * (max - min);
-
-    this.M = randomInt(2, 8);
-    this.I = randomInt(1, 2);
-    this.S = this.hash(seed + 10) > 0.5 ? 1 : -1;
-    this.z = randomInt(2, 9);
-    this.xDirection = -this.S;
-    this.P = randomFloat(0.2, 0.8);
-    this.V = randomInt(8, 20);
-  }
-
-  // Cubic Bezier curve functions
-  private getBezierValue(t: number, p1: number, p2: number, p3: number, p4: number): number {
-    const i = 1 - t;
-    const s = t * t;
-    const o = i * i;
-    return o * i * p1 + 3 * o * t * p2 + 3 * i * s * p3 + s * t * p4;
-  }
-
-  private solveBezierX(t: number, p1: number, p2: number): number {
-    let e = t;
-    for (let n = 0; n < 8; n++) {
-      const val = this.getBezierValue(e, 0, p1, p2, 1);
-      const slope = (this.getBezierValue(e + 0.001, 0, p1, p2, 1) - val) / 0.001;
-      if (slope === 0) break;
-      e -= (val - t) / slope;
-    }
-    return Math.max(0, Math.min(1, e));
+    this.isLoopRunning = false;
   }
 
   private initParticleCanvas() {
-    this.canvasElement = document.getElementById('particleCanvas') as HTMLCanvasElement;
-    if (!this.canvasElement) return;
-
-    const canvas = this.canvasElement;
+    const canvas = document.getElementById('particleCanvas');
+    if (!(canvas instanceof HTMLCanvasElement)) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    resizeCanvas();
-
-    this.resizeListener = () => {
-      this.ngZone.runOutsideAngular(() => {
-        resizeCanvas();
-      });
-    };
-    window.addEventListener('resize', this.resizeListener);
+    this.canvas = canvas;
+    this.ctx = ctx;
+    this.reducedMotion =
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     this.ngZone.runOutsideAngular(() => {
-      this.mouseMoveListener = (e: MouseEvent) => {
-        this.targetX = (e.clientX / window.innerWidth) * 100;
-        this.targetY = (e.clientY / window.innerHeight) * 100;
-      };
+      this.resizeCanvas(true);
 
-      this.touchMoveListener = (e: TouchEvent) => {
-        if (e.touches.length > 0) {
-          this.targetX = (e.touches[0].clientX / window.innerWidth) * 100;
-          this.targetY = (e.touches[0].clientY / window.innerHeight) * 100;
-        }
-      };
+      window.addEventListener('resize', this.handleResize, { passive: true });
+      window.addEventListener('pointermove', this.handlePointerMove, { passive: true });
+      window.addEventListener('touchmove', this.handleTouchMove, { passive: true });
+      window.addEventListener('touchend', this.handlePointerLeave, { passive: true });
+      window.addEventListener('pointerdown', this.handlePointerDown, { passive: true });
+      document.documentElement.addEventListener('pointerleave', this.handlePointerLeave);
 
-      window.addEventListener('mousemove', this.mouseMoveListener);
-      window.addEventListener('touchmove', this.touchMoveListener, { passive: true });
-    });
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Smooth coordinate tracking transition (lerp) simulating CSS transition floaty lag (more fluid weight)
-      this.smoothX += (this.targetX - this.smoothX) * 0.025;
-      this.smoothY += (this.targetY - this.smoothY) * 0.025;
-
-      // Calculate cursor speed/velocity and direction of travel for water warp distortion
-      const dx = this.targetX - this.smoothX;
-      const dy = this.targetY - this.smoothY;
-      const speed = Math.sqrt(dx * dx + dy * dy);
-      const travelAngle = Math.atan2(dy, dx);
-      const cappedSpeed = Math.min(speed, 8);
-
-      // Base radius oscillation simulating keyframe ring animation (lesser center whitespace)
-      const radius = 40 + Math.sin(this.animationTime) * 10;
-      this.animationTime += 0.0015;
-
-      const thickness = 390;
-      const rows = 11;
-      const count = 45;
-      const minAlpha = 0.22;
-      const maxAlpha = 1.0;
-      const size = 3.0;
-
-      const outerRadius = radius + thickness;
-      const innerRadius = radius;
-      const middleRadius = thickness / 2;
-
-      // Easing cubic bezier (ease-in: [.42, 0, 1, 1])
-      const w = 0.42;
-      const B = 0;
-      const y = 1;
-      const v = 1;
-
-      const centerX = (canvas.width * this.smoothX) / 100;
-      const centerY = (canvas.height * this.smoothY) / 100;
-      const animationAngle = this.tick * Math.PI * 2;
-
-      // Slow tick increment (calm wave speed)
-      this.tick += 0.0002;
-
-      for (let rIndex = 0; rIndex < rows; rIndex++) {
-        const currentRadius = innerRadius + (rows > 1 ? rIndex / (rows - 1) : 0) * thickness;
-        for (let cIndex = 0; cIndex < count; cIndex++) {
-          const angle = (cIndex / count) * Math.PI * 2;
-          const finalAngle = angle;
-          const particleScale = size;
-
-          const wave =
-            Math.sin(finalAngle * this.M + animationAngle * this.I * this.S) +
-            Math.sin(finalAngle * this.z + 1 * animationAngle * this.xDirection) +
-            Math.sin(currentRadius * this.P + animationAngle);
-
-          let intensity = (wave + 3) / 6;
-          intensity = Math.pow(Math.max(0, intensity), 1.5);
-          let alpha = minAlpha + intensity * (maxAlpha - minAlpha);
-
-          // Directional water displacement warp: compresses front of travel vector, stretches rear (higher multiplier for stronger warp)
-          const warp = Math.cos(finalAngle - travelAngle) * cappedSpeed * 8.0;
-          // Ripple swells/stretches wave height slightly when moving fast, mimicking water resistance
-          const activeWaveFactor = 18 + cappedSpeed * 2.8;
-
-          const radiusWithWave = currentRadius + wave * activeWaveFactor - warp;
-          const drawX = centerX + Math.cos(finalAngle) * radiusWithWave;
-          const drawY = centerY + Math.sin(finalAngle) * radiusWithWave;
-
-          // Fluid outer limit varies with the wave to make the entire ring boundary morph dynamically
-          const fluidOuterRadius = outerRadius + wave * 36;
-          let easeFactor =
-            Math.min(radiusWithWave - innerRadius, fluidOuterRadius - radiusWithWave) /
-            middleRadius;
-          if (easeFactor < 0) easeFactor = 0;
-          if (easeFactor > 1) easeFactor = 1;
-
-          const resolvedBezier = this.solveBezierX(easeFactor, w, y);
-          alpha *= this.getBezierValue(resolvedBezier, 0, B, v, 1);
-
-          if (alpha < 0) alpha = 0;
-          if (alpha > 1) alpha = 1;
-
-          if (alpha > 0.01) {
-            ctx.globalAlpha = alpha;
-
-            // Progressive rainbow spectrum wrapping around the circle and rotating slowly over time
-            const hue = ((finalAngle / (Math.PI * 2)) * 360 + this.tick * 30) % 360;
-            ctx.fillStyle = `hsl(${hue < 0 ? hue + 360 : hue}, 85%, 62%)`;
-
-            ctx.save();
-            ctx.translate(drawX, drawY);
-            ctx.rotate(finalAngle + Math.PI / 2); // Aligned tangent to the circular wave
-            // Draw thicker confetti dash (width 2.6x scale, height 1.3x scale)
-            ctx.fillRect(
-              -particleScale * 1.3,
-              -particleScale * 0.65,
-              particleScale * 2.6,
-              particleScale * 1.3,
-            );
-            ctx.restore();
+      // Pause the render loop while the hero is scrolled out of view
+      if (typeof IntersectionObserver !== 'undefined') {
+        this.visibilityObserver = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            this.isCanvasVisible = entry.isIntersecting;
           }
+          if (this.isCanvasVisible) {
+            this.startLoop();
+          }
+        });
+        this.visibilityObserver.observe(canvas);
+      }
+
+      this.startLoop();
+    });
+  }
+
+  private startLoop() {
+    if (this.isLoopRunning) return;
+    this.isLoopRunning = true;
+    this.lastFrameTime = performance.now();
+    this.animationFrameId = requestAnimationFrame(this.renderFrame);
+  }
+
+  private resizeCanvas(isFirstLayout: boolean) {
+    const canvas = this.canvas;
+    const ctx = this.ctx;
+    if (!canvas || !ctx) return;
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const width = canvas.parentElement ? canvas.parentElement.clientWidth : window.innerWidth;
+    const height = canvas.parentElement ? canvas.parentElement.clientHeight : window.innerHeight;
+    this.viewWidth = width;
+    this.viewHeight = height;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const minDim = Math.min(width, height);
+    const maxDim = Math.max(width, height);
+    this.innerRadius = clamp(minDim * 0.08, 36, 80);
+    this.outerRadius = clamp(maxDim * 0.27, 190, 500);
+
+    // Idle around the profile avatar when the cursor is elsewhere
+    const canvasRect = canvas.getBoundingClientRect();
+    const avatar = canvas.parentElement?.querySelector('.hero-avatar-container');
+    if (avatar) {
+      const avatarRect = avatar.getBoundingClientRect();
+      this.restX = avatarRect.left + avatarRect.width / 2 - canvasRect.left;
+      this.restY = avatarRect.top + avatarRect.height / 2 - canvasRect.top;
+    } else {
+      this.restX = width * 0.5;
+      this.restY = height * 0.5;
+    }
+
+    if (isFirstLayout) {
+      this.centerX = this.restX;
+      this.centerY = this.restY;
+    }
+
+    this.initParticles(isFirstLayout);
+    this.initDust();
+  }
+
+  private initParticles(bloomFromCenter: boolean) {
+    this.particles = [];
+    const count = Math.round(clamp((this.viewWidth * this.viewHeight) / 3000, 180, 560));
+    const bandWidth = this.outerRadius - this.innerRadius;
+
+    for (let i = 0; i < count; i++) {
+      const band = Math.pow(Math.random(), 0.75);
+      const angle = Math.random() * TAU;
+      const radius = this.innerRadius + band * bandWidth;
+
+      // On first load every dash starts in the core and springs outward (bloom intro)
+      const startRadius = bloomFromCenter ? Math.random() * 12 : radius;
+
+      this.particles.push({
+        band,
+        angle,
+        // Differential rotation: inner dashes orbit faster, so the field shears organically
+        spin: (0.0016 - band * 0.0009) * (0.7 + Math.random() * 0.6),
+        phase: Math.random() * TAU,
+        // Inner = stiff (follows instantly), outer = soft (trails behind) → fluid warp
+        stiffness: (0.07 - band * 0.048) * (0.8 + Math.random() * 0.4),
+        damping: 0.84 + Math.random() * 0.06,
+        length: 5 + Math.random() * 6,
+        thickness: 2 + Math.random() * 1.2,
+        alpha: 0.55 + Math.random() * 0.45,
+        x: this.centerX + Math.cos(angle) * startRadius,
+        y: this.centerY + Math.sin(angle) * startRadius,
+        vx: 0,
+        vy: 0,
+        restTilt: (Math.random() - 0.5) * 0.6,
+        tilt: (Math.random() - 0.5) * TAU,
+        tiltVel: 0,
+        tumbleDir: Math.random() < 0.5 ? -1 : 1,
+        flip: Math.random() * TAU,
+        agitation: bloomFromCenter ? 1 : 0,
+      });
+    }
+  }
+
+  private initDust() {
+    this.dust = [];
+    const count = Math.round(clamp((this.viewWidth * this.viewHeight) / 9000, 60, 220));
+    for (let i = 0; i < count; i++) {
+      this.dust.push({
+        x: Math.random() * this.viewWidth,
+        y: Math.random() * this.viewHeight,
+        size: 0.6 + Math.random() * 0.9,
+        alpha: 0.18 + Math.random() * 0.3,
+        phase: Math.random() * TAU,
+        depth: 0.3 + Math.random() * 0.7,
+      });
+    }
+  }
+
+  private step(now: number) {
+    const canvas = this.canvas;
+    const ctx = this.ctx;
+    if (!canvas || !ctx) return;
+
+    const dt = clamp((now - this.lastFrameTime) / 16.667, 0.2, 3);
+    this.lastFrameTime = now;
+    this.time += dt * 0.016;
+    const motion = this.reducedMotion ? 0.25 : 1;
+    const t = this.time;
+
+    // ---- 1. Move the field centre toward the cursor (or idle around the avatar) ----
+    const rect = canvas.getBoundingClientRect();
+    const px = this.pointerClientX - rect.left;
+    const py = this.pointerClientY - rect.top;
+    const pointerInside =
+      this.hasPointer &&
+      !this.reducedMotion &&
+      px >= 0 &&
+      py >= 0 &&
+      px <= rect.width &&
+      py <= rect.height;
+
+    const minDim = Math.min(this.viewWidth, this.viewHeight);
+    let targetX: number;
+    let targetY: number;
+    let followRate: number;
+    if (pointerInside) {
+      targetX = px;
+      targetY = py;
+      followRate = 0.14;
+    } else {
+      targetX = this.restX + Math.sin(t * 0.42) * minDim * 0.025;
+      targetY = this.restY + Math.cos(t * 0.33) * minDim * 0.03;
+      followRate = 0.025;
+    }
+
+    const follow = 1 - Math.pow(1 - followRate, dt);
+    const prevCenterX = this.centerX;
+    const prevCenterY = this.centerY;
+    this.centerX += (targetX - this.centerX) * follow;
+    this.centerY += (targetY - this.centerY) * follow;
+    const centerVx = (this.centerX - prevCenterX) / dt;
+    const centerVy = (this.centerY - prevCenterY) / dt;
+    const centerSpeed = Math.hypot(centerVx, centerVy);
+
+    ctx.clearRect(0, 0, this.viewWidth, this.viewHeight);
+
+    // ---- 2. Background dust (slight counter-parallax for depth) ----
+    const parallaxX = (this.centerX - this.restX) * -0.03;
+    const parallaxY = (this.centerY - this.restY) * -0.03;
+    ctx.fillStyle = 'rgb(110, 120, 140)';
+    for (const mote of this.dust) {
+      ctx.globalAlpha = mote.alpha * (0.6 + 0.4 * Math.sin(t * 1.5 + mote.phase));
+      ctx.fillRect(
+        mote.x + parallaxX * mote.depth,
+        mote.y + parallaxY * mote.depth,
+        mote.size,
+        mote.size,
+      );
+    }
+
+    // ---- 3. Fluid particle ring ----
+    const inner = this.innerRadius;
+    const outer = this.outerRadius;
+    const bandWidth = outer - inner;
+    const breathe = Math.sin(t * 0.9) * 0.04 * motion;
+    const hueShift = t * 6;
+    const partRadius = inner * 1.4;
+    const partRadiusSq = partRadius * partRadius;
+    ctx.lineCap = 'round';
+
+    for (const p of this.particles) {
+      p.angle += p.spin * dt * motion;
+
+      // Travelling ripples around the ring keep the silhouette irregular and alive
+      const ripple =
+        (Math.sin(p.angle * 3 + t * 1.1 + p.phase) * 0.07 +
+          Math.sin(p.angle * 5 - t * 1.7 + p.phase * 2) * 0.035) *
+        motion;
+      const radius = (inner + p.band * bandWidth) * (1 + ripple + breathe);
+      const homeX = this.centerX + Math.cos(p.angle) * radius;
+      const homeY = this.centerY + Math.sin(p.angle) * radius;
+
+      // Spring toward the home slot
+      let ax = (homeX - p.x) * p.stiffness;
+      let ay = (homeY - p.y) * p.stiffness;
+
+      // Turbulent wake: moving field sheds sideways eddies, strongest at the soft outer rim
+      if (centerSpeed > 0.2) {
+        const eddy = Math.sin(p.phase * 3 + t * 4 + p.band * 6) * 0.035 * (0.4 + p.band);
+        ax += -centerVy * eddy;
+        ay += centerVx * eddy;
+      }
+
+      // The cursor tip gently parts any dashes that drift through the core
+      if (pointerInside) {
+        const dx = p.x - px;
+        const dy = p.y - py;
+        const distSq = dx * dx + dy * dy;
+        if (distSq < partRadiusSq && distSq > 0.01) {
+          const d = Math.sqrt(distSq);
+          const push = (1 - d / partRadius) * 1.6;
+          ax += (dx / d) * push;
+          ay += (dy / d) * push;
         }
       }
 
-      this.animationFrameId = requestAnimationFrame(animate);
-    };
+      const drag = Math.pow(p.damping, dt);
+      p.vx = (p.vx + ax * dt) * drag;
+      p.vy = (p.vy + ay * dt) * drag;
+      p.x += p.vx * dt;
+      p.y += p.vy * dt;
 
-    this.ngZone.runOutsideAngular(() => {
-      animate();
-    });
+      // ---- Render ----
+      const rx = p.x - this.centerX;
+      const ry = p.y - this.centerY;
+      const dist = Math.hypot(rx, ry) || 1;
+      const edgeFade =
+        smoothstep(0, 80, p.x) *
+        smoothstep(0, 80, this.viewWidth - p.x) *
+        smoothstep(0, 60, p.y) *
+        smoothstep(0, 60, this.viewHeight - p.y);
+      const alpha =
+        p.alpha *
+        edgeFade *
+        smoothstep(inner * 0.4, inner * 1.3, dist) *
+        (1 - smoothstep(outer * 0.92, outer * 1.3, dist));
+      if (alpha < 0.02) continue;
+
+      // Confetti tumble: each piece spins and flips with its own speed and direction,
+      // then settles back to a near-radial resting tilt once the field calms down
+      const speed = Math.hypot(p.vx, p.vy);
+      p.agitation += (Math.min(speed / 4, 1) - p.agitation) * Math.min(0.08 * dt, 1);
+      p.tiltVel += p.tumbleDir * p.agitation * 0.035 * dt;
+      let tiltError = (p.restTilt - p.tilt) % Math.PI;
+      if (tiltError > Math.PI / 2) tiltError -= Math.PI;
+      if (tiltError < -Math.PI / 2) tiltError += Math.PI;
+      p.tiltVel += tiltError * 0.02 * (1 - p.agitation) * dt;
+      p.tiltVel *= Math.pow(0.9, dt);
+      p.tilt += p.tiltVel * dt;
+      p.flip += (0.012 + p.agitation * 0.22) * p.tumbleDir * dt * motion;
+
+      const orientation = Math.atan2(ry, rx) + p.tilt;
+      const dirX = Math.cos(orientation);
+      const dirY = Math.sin(orientation);
+      // Flipping piece: at rest it shows (almost) full length, when tumbling it flickers
+      const flipAmount = 0.15 + p.agitation * 0.7;
+      const flipScale = 1 - flipAmount * (1 - Math.abs(Math.cos(p.flip)));
+
+      // Pieces grow toward the rim
+      const scale = 0.35 + 0.85 * smoothstep(0, outer, dist);
+      const half = Math.max(p.length * scale * flipScale, 1.2) * 0.5;
+      const screenDeg = (Math.atan2(ry, rx) * 180) / Math.PI + hueShift;
+      const deg = Math.floor((screenDeg % 360) + 360) % 360;
+
+      ctx.globalAlpha = alpha;
+      // eslint-disable-next-line security/detect-object-injection
+      ctx.strokeStyle = this.colorLut[deg];
+      ctx.lineWidth = p.thickness * (0.55 + 0.45 * scale);
+      ctx.beginPath();
+      ctx.moveTo(p.x - dirX * half, p.y - dirY * half);
+      ctx.lineTo(p.x + dirX * half, p.y + dirY * half);
+      ctx.stroke();
+    }
+
+    ctx.globalAlpha = 1;
+  }
+
+  /** Click / tap sends a radial impulse through the field; the springs pull it back together. */
+  private emitPulse(clientX: number, clientY: number) {
+    const canvas = this.canvas;
+    if (!canvas) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+    if (x < 0 || y < 0 || x > rect.width || y > rect.height) return;
+
+    const reach = this.outerRadius * 0.9;
+    for (const p of this.particles) {
+      const dx = p.x - x;
+      const dy = p.y - y;
+      const d = Math.hypot(dx, dy);
+      if (d < reach && d > 0.01) {
+        const force = Math.pow(1 - d / reach, 2) * 18;
+        p.vx += (dx / d) * force;
+        p.vy += (dy / d) * force;
+      }
+    }
   }
 
   private initHeroTextAnimation() {
@@ -288,11 +538,12 @@ export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
     const originalText = this.ts.t().hero.title;
     heroTitle.textContent = '';
 
-    // Split Chinese by individual characters to prevent nowrap cutoffs, split others by whitespace
+    // Split Chinese by character, others by whitespace
     const words =
       this.ts.currentLang() === 'zh'
         ? Array.from(originalText.replace(/\s+/g, ''))
         : originalText.split(/\s+/);
+
     words.forEach((word, wordIndex) => {
       const wordSpan = document.createElement('span');
       wordSpan.className = 'word-span';
@@ -302,7 +553,7 @@ export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
         const letterSpan = document.createElement('span');
         letterSpan.className = 'char-span';
         letterSpan.textContent = letter;
-        letterSpan.style.transitionDelay = `${(wordIndex * 3 + letterIndex) * 30}ms`;
+        letterSpan.style.transitionDelay = `${(wordIndex * 2 + letterIndex) * 25}ms`;
         wordSpan.appendChild(letterSpan);
       });
 
@@ -316,6 +567,6 @@ export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
 
     setTimeout(() => {
       heroTitle.classList.add('liftoff');
-    }, 100);
+    }, 80);
   }
 }

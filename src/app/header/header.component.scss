@@ -43,6 +43,12 @@
   font-weight: 700;
   font-size: 1.2rem;
   letter-spacing: 0.5px;
+  flex-shrink: 0;
+  white-space: nowrap;
+
+  &-text {
+    white-space: nowrap;
+  }
 
   &-avatar {
     width: 2rem;
@@ -53,6 +59,7 @@
     box-shadow: var(--shadow-sm);
     background-color: rgba(0, 0, 0, 0.02);
     transition: transform var(--transition-fast);
+    flex-shrink: 0;
   }
 
   &:hover &-avatar {
@@ -246,6 +253,21 @@
   .material-symbols-outlined {
     font-size: 1.1rem;
     font-variation-settings: 'wght' 500;
+  }
+}
+
+@media (max-width: 1200px) {
+  .floating-header {
+    max-width: calc(96% - var(--spacing-container) * 2);
+  }
+
+  .nav-link {
+    padding: 0.4rem 0.65rem;
+    font-size: 0.95rem;
+  }
+
+  .nav-links {
+    gap: 0.15rem;
   }
 }
 

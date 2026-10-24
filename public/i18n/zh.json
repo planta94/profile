@@ -83,6 +83,8 @@
     "tag": "专业能力",
     "title": "核心研究方向",
     "desc": "交互式仪表盘，展示工业界实践与学术科研成果。",
+    "accomplishmentsTitle": "主要工作成果",
+    "techStackTitle": "技术栈",
     "tabs": [
       {
         "title": "代理AI与大语言模型",
@@ -163,6 +165,9 @@
     "phoneLabel": "联系电话",
     "locationLabel": "办公地点",
     "locationValue": "马来西亚，雪兰莪州",
-    "referencesTitle": "推荐人信息"
+    "referencesTitle": "推荐人信息",
+    "refSeniorEngineer": "高级软件工程师",
+    "refProfessor": "教授",
+    "refUtar": "马来西亚拉曼大学"
   }
 }
